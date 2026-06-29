@@ -1,0 +1,2117 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Noor al-Hidayah — نور الهداية | Shia Islamic Knowledge Portal</title>
+<meta name="description" content="A Shia Islamic portal: the Maraji' al-Taqleed and their books, the Holy Qur'an, Nahj al-Balagha, the hadith collections, daily reminders, and unified search for authentic narrations." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Scheherazade+New:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Nastaliq+Urdu:wght@400;700&family=Vazirmatn:wght@400;500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<meta name="theme-color" content="#0e3d2e" />
+<link rel="manifest" href="manifest.json" />
+<script>
+  // Apply saved preferences before paint (prevents flash)
+  try{
+    var P=JSON.parse(localStorage.getItem('noor_prefs')||'{}');
+    var cls=document.documentElement;
+    if(P.theme==='dark') document.write('<style>body{background:#0a1712}</style>');
+  }catch(e){}
+</script>
+<style>
+  :root{
+    --green-900:#0a2e23;
+    --green-800:#0e3d2e;
+    --green-700:#12503b;
+    --green-600:#1a6b50;
+    --gold:#c9a24a;
+    --gold-light:#e7c878;
+    --gold-soft:#f3e6c2;
+    --cream:#f7f2e7;
+    --cream-2:#fbf8f0;
+    --ink:#1d2420;
+    --muted:#5d6b62;
+    --line:rgba(201,162,74,.28);
+    --shadow:0 14px 40px rgba(10,46,35,.18);
+    --radius:18px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Poppins',sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .arabic{font-family:'Amiri','Scheherazade New',serif;direction:rtl;line-height:2.1}
+  h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600;letter-spacing:.2px}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+
+  /* ----- decorative arabesque background ----- */
+  .pattern-bg{
+    background-color:var(--green-800);
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(201,162,74,.18) 1.4px, transparent 0),
+      radial-gradient(circle at 16px 16px, rgba(201,162,74,.10) 1.4px, transparent 0);
+    background-size:32px 32px;
+  }
+
+  /* ----- top bar ----- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(10,46,35,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{display:flex;align-items:center;gap:12px;color:var(--cream)}
+  .brand .mark{
+    width:42px;height:42px;border-radius:50%;
+    display:grid;place-items:center;
+    background:radial-gradient(circle at 30% 25%,var(--gold-light),var(--gold) 70%);
+    color:var(--green-900);font-weight:700;box-shadow:0 0 0 4px rgba(201,162,74,.18);
+  }
+  .brand b{font-family:'Cormorant Garamond',serif;font-size:1.4rem;letter-spacing:.5px;line-height:1}
+  .brand small{display:block;color:var(--gold-light);font-size:.68rem;letter-spacing:3px;text-transform:uppercase}
+  nav.links{display:flex;gap:6px}
+  nav.links a{
+    color:var(--cream);font-size:.86rem;padding:9px 14px;border-radius:10px;opacity:.85;transition:.2s;
+  }
+  nav.links a:hover{background:rgba(201,162,74,.16);opacity:1;color:var(--gold-light)}
+  .menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--gold-light);border-radius:10px;padding:8px 12px;font-size:1.1rem;cursor:pointer}
+
+  /* ----- hero ----- */
+  .hero{position:relative;color:var(--cream);padding:64px 0 54px;overflow:hidden}
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(10,46,35,.78),rgba(10,46,35,.92));
+  }
+  .hero .wrap{position:relative;z-index:2;text-align:center}
+  .bismillah{font-family:'Amiri',serif;font-size:clamp(1.8rem,4vw,2.8rem);color:var(--gold-light);margin-bottom:8px}
+  .hero h1{font-size:clamp(2.2rem,5vw,3.6rem);color:var(--cream);margin-bottom:6px}
+  .hero .sub{color:var(--gold-soft);max-width:720px;margin:0 auto 8px;font-size:1.02rem}
+  .ornament{display:flex;align-items:center;justify-content:center;gap:14px;margin:22px auto 0;color:var(--gold);max-width:340px}
+  .ornament .line{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);flex:1}
+  .ornament svg{width:26px;height:26px;flex:none}
+
+  /* ----- daily reminder card ----- */
+  .daily{margin-top:38px}
+  .daily-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .rcard{
+    background:linear-gradient(160deg,var(--cream-2),#fff);
+    border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 26px 22px;box-shadow:var(--shadow);position:relative;overflow:hidden;
+  }
+  .rcard::after{content:"";position:absolute;top:-40px;right:-40px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(201,162,74,.16),transparent 70%)}
+  .rcard .tag{display:inline-flex;align-items:center;gap:8px;font-size:.7rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--green-600);font-weight:600;margin-bottom:14px}
+  .rcard .tag .dot{width:8px;height:8px;border-radius:50%;background:var(--gold)}
+  .rcard .ar{font-size:1.5rem;color:var(--green-800);margin-bottom:14px;text-align:right}
+  .rcard .tr{color:var(--ink);font-style:italic;font-family:'Cormorant Garamond',serif;font-size:1.18rem;line-height:1.5;margin-bottom:10px}
+  .rcard .src{color:var(--muted);font-size:.82rem;font-weight:500}
+  .daily-note{text-align:center;color:var(--gold-soft);font-size:.85rem;margin-top:18px;opacity:.9}
+
+  /* ----- section shell ----- */
+  section{padding:62px 0}
+  .sec-head{text-align:center;max-width:680px;margin:0 auto 40px}
+  .sec-head .kicker{color:var(--gold);font-size:.74rem;letter-spacing:3px;text-transform:uppercase;font-weight:600}
+  .sec-head h2{font-size:clamp(1.9rem,3.6vw,2.7rem);color:var(--green-800);margin:6px 0 10px}
+  .sec-head p{color:var(--muted)}
+  .alt{background:linear-gradient(180deg,#fff,var(--cream))}
+
+  /* ----- search ----- */
+  .search-shell{max-width:920px;margin:0 auto}
+  .search-box{display:flex;gap:10px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px;box-shadow:var(--shadow);flex-wrap:wrap}
+  .search-box input[type=text]{flex:1;min-width:220px;border:none;outline:none;font-size:1rem;padding:12px 14px;font-family:inherit;background:transparent}
+  .search-box select{border:1px solid var(--line);border-radius:10px;padding:0 12px;font-family:inherit;color:var(--ink);background:var(--cream-2);outline:none;cursor:pointer}
+  .btn{
+    background:linear-gradient(160deg,var(--green-700),var(--green-600));
+    color:var(--cream);border:none;border-radius:12px;padding:13px 22px;font-family:inherit;font-weight:500;
+    cursor:pointer;transition:.2s;font-size:.95rem;display:inline-flex;align-items:center;gap:8px;
+  }
+  .btn:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(18,80,59,.3)}
+  .btn.gold{background:linear-gradient(160deg,var(--gold),#b78f38);color:var(--green-900);font-weight:600}
+  .search-hint{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:16px}
+  .chip{font-size:.78rem;background:var(--green-700);color:var(--gold-soft);padding:6px 13px;border-radius:30px;cursor:pointer;border:1px solid transparent;transition:.2s}
+  .chip:hover{background:var(--gold);color:var(--green-900)}
+  .results{margin-top:30px;display:grid;gap:16px}
+  .res{
+    background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);
+    border-radius:14px;padding:20px 22px;box-shadow:0 6px 18px rgba(10,46,35,.07);animation:fade .3s ease;
+  }
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .res .ar{font-size:1.35rem;color:var(--green-800);text-align:right;margin-bottom:12px}
+  .res .tr{font-family:'Cormorant Garamond',serif;font-size:1.12rem;color:var(--ink);margin-bottom:12px}
+  .res .meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .res .badge{font-size:.7rem;letter-spacing:1px;text-transform:uppercase;background:var(--green-700);color:var(--gold-soft);padding:4px 10px;border-radius:20px;font-weight:600}
+  .res .badge.book{background:var(--gold-soft);color:var(--green-800)}
+  .res .badge.quran{background:#1a6b50;color:#fff}
+  .res mark{background:var(--gold-light);color:var(--green-900);padding:0 2px;border-radius:3px}
+  .no-res{text-align:center;color:var(--muted);padding:30px;background:#fff;border:1px dashed var(--line);border-radius:14px}
+  .ext-search{margin-top:26px;background:var(--green-800);border-radius:var(--radius);padding:26px;color:var(--cream);text-align:center}
+  .ext-search h3{color:var(--gold-light);font-size:1.4rem;margin-bottom:6px}
+  .ext-search p{color:var(--gold-soft);font-size:.9rem;margin-bottom:16px;opacity:.9}
+  .ext-btns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+  .ext-btns a{background:rgba(201,162,74,.16);border:1px solid var(--line);color:var(--gold-light);padding:10px 16px;border-radius:12px;font-size:.86rem;transition:.2s}
+  .ext-btns a:hover{background:var(--gold);color:var(--green-900)}
+
+  /* ----- maraji grid ----- */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+  .marja{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:0 6px 18px rgba(10,46,35,.07);
+    transition:.25s;display:flex;flex-direction:column;
+  }
+  .marja:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--gold)}
+  .marja .top{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+  .marja .av{
+    width:54px;height:54px;border-radius:14px;flex:none;display:grid;place-items:center;
+    background:linear-gradient(160deg,var(--green-700),var(--green-600));color:var(--gold-light);
+    font-family:'Amiri',serif;font-size:1.5rem;
+  }
+  .marja h3{font-size:1.28rem;color:var(--green-800);line-height:1.15}
+  .marja .status{font-size:.72rem;color:var(--muted);font-weight:500}
+  .marja .status.alive{color:var(--green-600)}
+  .marja .desc{font-size:.88rem;color:var(--muted);margin-bottom:14px;flex:1}
+  .marja .books{list-style:none;margin-bottom:16px}
+  .marja .books li{font-size:.84rem;padding:5px 0;border-bottom:1px dashed var(--line);display:flex;align-items:center;gap:8px}
+  .marja .books li::before{content:"۞";color:var(--gold);font-size:.8rem}
+  .marja .actions{display:flex;gap:8px;flex-wrap:wrap}
+  .marja .actions a,.marja .actions button{font-size:.8rem;padding:8px 12px;border-radius:10px;cursor:pointer;border:1px solid var(--line);background:var(--cream-2);color:var(--green-700);transition:.2s;font-family:inherit}
+  .marja .actions a:hover,.marja .actions button:hover{background:var(--green-700);color:var(--cream)}
+
+  /* ----- core books ----- */
+  .books-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}
+  .book{
+    background:linear-gradient(160deg,var(--green-800),var(--green-700));color:var(--cream);
+    border-radius:var(--radius);padding:24px;position:relative;overflow:hidden;border:1px solid var(--line);
+    transition:.25s;min-height:190px;display:flex;flex-direction:column;justify-content:space-between;
+  }
+  .book:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .book::before{content:"";position:absolute;bottom:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(201,162,74,.18),transparent 70%)}
+  .book .ar{font-size:1.5rem;color:var(--gold-light);text-align:right;margin-bottom:6px}
+  .book h3{font-size:1.25rem;color:var(--cream)}
+  .book p{font-size:.82rem;color:var(--gold-soft);opacity:.9;margin:6px 0 14px;position:relative;z-index:2}
+  .book a{font-size:.82rem;color:var(--green-900);background:var(--gold-light);padding:8px 14px;border-radius:10px;align-self:flex-start;font-weight:600;position:relative;z-index:2;transition:.2s}
+  .book a:hover{background:var(--cream)}
+
+  /* ----- pillars / quick ----- */
+  .pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px}
+  .pillar{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;text-align:center;box-shadow:0 6px 18px rgba(10,46,35,.06)}
+  .pillar .ic{font-size:1.8rem;color:var(--gold);margin-bottom:8px}
+  .pillar h4{font-family:'Cormorant Garamond',serif;color:var(--green-800);font-size:1.15rem}
+  .pillar small{color:var(--muted);font-size:.78rem}
+
+  /* ----- footer ----- */
+  footer{background:var(--green-900);color:var(--gold-soft);padding:48px 0 26px;border-top:3px solid var(--gold)}
+  footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px;margin-bottom:30px}
+  footer h4{color:var(--gold-light);font-family:'Cormorant Garamond',serif;font-size:1.3rem;margin-bottom:12px}
+  footer p,footer a{font-size:.86rem;color:var(--gold-soft);opacity:.85;display:block;margin-bottom:6px}
+  footer a:hover{color:var(--gold-light);opacity:1}
+  .foot-bottom{border-top:1px solid var(--line);padding-top:18px;text-align:center;font-size:.8rem;opacity:.7}
+  .salawat{text-align:center;font-family:'Amiri',serif;font-size:1.4rem;color:var(--gold-light);margin-bottom:20px}
+
+  /* ----- reading controls + result actions ----- */
+  .res .ar{font-size:calc(1.35rem * var(--ar-scale,1))}
+  .row-actions{display:inline-flex;gap:6px;margin-left:auto}
+  .ic-btn{font-family:inherit;font-size:.72rem;border:1px solid var(--line);background:var(--cream-2);color:var(--green-700);
+    border-radius:8px;padding:4px 9px;cursor:pointer;transition:.15s}
+  .ic-btn:hover{background:var(--green-700);color:var(--cream)}
+  .ic-btn.on{background:var(--gold);color:var(--green-900);border-color:var(--gold)}
+  body.hide-tr #results .tr, body.hide-tr #surahView .tr, body.hide-tr #nahjView .tr,
+  body.hide-tr #results .ur, body.hide-tr #surahView .ur, body.hide-tr #nahjView .ur,
+  body.hide-tr #results .fa, body.hide-tr #surahView .fa, body.hide-tr #nahjView .fa{display:none}
+  /* Urdu (Nastaliq) translation line */
+  .res .ur{font-family:'Noto Nastaliq Urdu','Amiri',serif;direction:rtl;text-align:right;
+    font-size:calc(1.02rem * var(--ar-scale,1));line-height:2.6;color:var(--green-700);margin-top:8px;
+    border-top:1px dashed var(--line);padding-top:8px}
+  /* Farsi translation line */
+  .res .fa{font-family:'Vazirmatn','Amiri',serif;direction:rtl;text-align:right;
+    font-size:calc(1.02rem * var(--ar-scale,1));line-height:2.2;color:var(--green-600);margin-top:8px;
+    border-top:1px dashed var(--line);padding-top:8px}
+  body.lang-en .ur, body.lang-en .fa{display:none}
+  body.lang-ur .tr, body.lang-ur .fa{display:none}
+  body.lang-fa .tr, body.lang-fa .ur{display:none}
+  body.dark .res .ur{color:#bfe0cf}
+  body.dark .res .fa{color:#a9d4be}
+  .reader-nav{display:flex;justify-content:space-between;gap:10px;margin:14px 0}
+  .reader-nav button{flex:1}
+
+  /* ----- 3D depth & motion ----- */
+  .results, #marajiGrid, #booksGrid, .tools-grid, #surahView, #nahjView, #hbView, #marjaSistani, .daily-grid{ perspective:1100px; }
+  .res,.marja,.book,.tool-card,.rcard{ transition:transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease; transform-style:preserve-3d; }
+  .search-box{ transition:box-shadow .3s ease, transform .25s ease; }
+  .search-box:focus-within{ box-shadow:0 28px 60px rgba(18,80,59,.32), 0 0 0 2px var(--gold); transform:translateY(-3px); }
+  .btn,.chip{ transition:transform .15s ease, box-shadow .2s ease, background .2s ease, color .2s ease; }
+  .btn:active{ transform:translateY(1px) scale(.98); }
+  .star3d{ display:block; width:46px; height:46px; margin:0 auto 12px; color:var(--gold); filter:drop-shadow(0 6px 10px rgba(201,162,74,.35)); }
+  @media (prefers-reduced-motion: no-preference){
+    .star3d{ transform-style:preserve-3d; animation:spin3d 11s linear infinite; }
+    @keyframes spin3d{ from{ transform:rotateY(0deg) rotateX(12deg);} to{ transform:rotateY(360deg) rotateX(12deg);} }
+    .float-soft{ animation:floaty 7s ease-in-out infinite; }
+    @keyframes floaty{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-8px);} }
+  }
+
+  /* ----- ziyarat & duas ----- */
+  .dua-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;margin-top:8px}
+  .dua-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;cursor:pointer;text-align:center;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s,border-color .2s;box-shadow:0 6px 18px rgba(10,46,35,.07)}
+  .dua-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--gold)}
+  .dua-card .dua-ar{font-family:'Amiri',serif;font-size:1.6rem;color:var(--green-800);direction:rtl;line-height:1.6}
+  .dua-card .dua-en{font-family:'Cormorant Garamond',serif;color:var(--green-700);font-size:1.05rem;margin-top:4px}
+  .dua-card .dua-cat{font-size:.66rem;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-top:8px}
+  .dua-line{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px}
+  .dua-line .ar{font-family:'Amiri','Scheherazade New',serif;direction:rtl;text-align:right;font-size:calc(1.55rem*var(--ar-scale,1));line-height:2.3;color:var(--green-800)}
+  .dua-line .en{font-family:'Cormorant Garamond',serif;font-size:1.08rem;color:var(--ink);margin-top:8px;border-top:1px dashed var(--line);padding-top:8px}
+  body.hide-tr #duaReader .en{display:none}
+  body.dark .dua-card,body.dark .dua-line{background:#11221b}
+  body.dark .dua-card .dua-ar,body.dark .dua-card .dua-en,body.dark .dua-line .ar{color:var(--gold-light)}
+  body.dark .dua-line .en{color:#e8e6db}
+
+  /* ----- history events ----- */
+  .ev-list{display:grid;gap:16px;margin-top:24px}
+  .ev{background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:14px;padding:20px 22px;box-shadow:0 6px 18px rgba(10,46,35,.07);transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
+  .ev .ev-top{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px}
+  .ev .ev-cat{font-size:.68rem;letter-spacing:1px;text-transform:uppercase;background:var(--green-700);color:var(--gold-soft);padding:4px 10px;border-radius:20px;font-weight:600}
+  .ev .ev-when{font-size:.78rem;color:var(--muted)}
+  .ev h3{font-size:1.35rem;color:var(--green-800);line-height:1.3;margin:2px 0 4px}
+  .ev .ev-place{font-size:.82rem;color:var(--green-600);margin-bottom:8px}
+  .ev .ev-sum{color:var(--ink);font-family:'Cormorant Garamond',serif;font-size:1.12rem;line-height:1.5}
+  .ev .ev-det{display:none;margin-top:14px;padding-top:14px;border-top:1px dashed var(--line);color:var(--ink);line-height:1.85}
+  .ev.open .ev-det{display:block;animation:fade .35s ease}
+  .ev .ev-toggle{margin-top:12px;font-size:.85rem;background:var(--cream-2);border:1px solid var(--line);color:var(--green-700);border-radius:10px;padding:8px 16px;cursor:pointer;font-family:inherit;transition:.18s}
+  .ev .ev-toggle:hover{background:var(--green-700);color:var(--cream)}
+  .ev[dir=rtl] h3,.ev[dir=rtl] .ev-sum,.ev[dir=rtl] .ev-det{text-align:right}
+  .ev.ar h3,.ev.ar .ev-sum,.ev.ar .ev-det{font-family:'Amiri',serif}
+  .ev.ar .ev-sum,.ev.ar .ev-det{font-size:1.3rem;line-height:2.1}
+  .ev.ur h3,.ev.ur .ev-sum,.ev.ur .ev-det{font-family:'Noto Nastaliq Urdu',serif;line-height:2.5}
+  .ev.fa h3,.ev.fa .ev-sum,.ev.fa .ev-det{font-family:'Vazirmatn',serif}
+  body.dark .ev{background:#11221b}
+  body.dark .ev h3{color:var(--gold-light)}
+  body.dark .ev .ev-sum,body.dark .ev .ev-det{color:#e8e6db}
+  body.dark .ev .ev-toggle{background:#0c1a14;color:var(--gold-light)}
+
+  /* ----- quiz ----- */
+  .quiz-shell{max-width:760px;margin:0 auto}
+  .quiz-setup{display:flex;flex-wrap:wrap;gap:18px;justify-content:center;margin-bottom:8px}
+  .quiz-group{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 18px;box-shadow:0 6px 18px rgba(10,46,35,.06)}
+  .quiz-group h4{font-family:'Poppins',sans-serif;font-weight:600;font-size:.74rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--green-600);margin-bottom:10px;text-align:center}
+  .seg{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+  .seg button{font-family:inherit;font-size:.84rem;padding:8px 14px;border-radius:30px;border:1px solid var(--line);background:var(--cream-2);color:var(--green-700);cursor:pointer;transition:.18s}
+  .seg button.sel{background:linear-gradient(160deg,var(--green-700),var(--green-600));color:var(--cream);border-color:transparent}
+  .seg button:hover{border-color:var(--gold)}
+  .quiz-card{background:linear-gradient(160deg,var(--cream-2),#fff);border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);margin-top:24px}
+  .quiz-meta{display:flex;justify-content:space-between;align-items:center;font-size:.8rem;color:var(--muted);margin-bottom:14px}
+  .quiz-badge{background:var(--green-700);color:var(--gold-soft);padding:4px 11px;border-radius:20px;font-weight:600;font-size:.72rem;letter-spacing:.5px}
+  .quiz-q{font-size:1.5rem;color:var(--green-800);text-align:center;margin:8px 0 22px;line-height:1.5}
+  .quiz-q.rtl{direction:rtl;font-family:'Amiri',serif}
+  .quiz-q.ur{direction:rtl;font-family:'Noto Nastaliq Urdu',serif;line-height:2.4;font-size:1.3rem}
+  .quiz-q.fa{direction:rtl;font-family:'Vazirmatn',serif}
+  .quiz-verse{direction:rtl;font-family:'Amiri','Scheherazade New',serif;font-size:1.7rem;line-height:2.2;color:var(--green-800);text-align:center;background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:6px 0 20px}
+  body.dark .quiz-verse{background:#0c1a14;color:var(--gold-light)}
+  .quiz-opts{display:grid;gap:12px}
+  .opt{display:flex;align-items:center;gap:12px;text-align:left;padding:15px 18px;border:1.5px solid var(--line);border-radius:14px;background:#fff;color:var(--ink);font-family:inherit;font-size:1.02rem;cursor:pointer;transition:.18s;width:100%}
+  .opt .k{width:28px;height:28px;flex:none;border-radius:50%;background:var(--cream);border:1px solid var(--line);display:grid;place-items:center;font-weight:600;color:var(--green-700);font-size:.85rem}
+  .opt:hover:not(:disabled){border-color:var(--gold);transform:translateX(3px)}
+  .opt.correct{background:linear-gradient(160deg,#e8f5ec,#d6efdd);border-color:#2e9e5b}
+  .opt.correct .k{background:#2e9e5b;color:#fff;border-color:#2e9e5b}
+  .opt.wrong{background:linear-gradient(160deg,#fbeaea,#f6dcdc);border-color:#c0504d}
+  .opt.wrong .k{background:#c0504d;color:#fff;border-color:#c0504d}
+  .opt[dir=rtl]{text-align:right;flex-direction:row-reverse}
+  .opt.ur{font-family:'Noto Nastaliq Urdu',serif;line-height:2.2}
+  .opt.fa{font-family:'Vazirmatn',serif}
+  .opt.ar{font-family:'Amiri',serif;font-size:1.2rem}
+  .quiz-ex{margin-top:16px;padding:14px 16px;background:var(--gold-soft);border-radius:12px;color:var(--green-800);font-size:.92rem;display:none}
+  .quiz-ex.show{display:block;animation:fade .3s ease}
+  .quiz-foot{display:flex;justify-content:space-between;align-items:center;margin-top:20px}
+  .quiz-score{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--green-700)}
+  .quiz-result{text-align:center;padding:20px}
+  .quiz-result .big{font-family:'Cormorant Garamond',serif;font-size:3rem;color:var(--gold);font-weight:600}
+  body.dark .quiz-group,body.dark .opt{background:#11221b;color:#e8e6db}
+  body.dark .quiz-card{background:linear-gradient(160deg,#11221b,#15281f)}
+  body.dark .quiz-q,body.dark .opt.correct,body.dark .opt.wrong{color:#0a1712}
+  body.dark .quiz-q{color:var(--gold-light)}
+  body.dark .opt .k{background:#0c1a14;color:var(--gold-light)}
+
+  /* ----- floating tool dock ----- */
+  .float-tools{position:fixed;right:16px;bottom:16px;display:flex;flex-direction:column;gap:8px;z-index:60}
+  .float-tools button{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);cursor:pointer;
+    background:var(--green-700);color:var(--gold-light);font-size:1.05rem;box-shadow:var(--shadow);transition:.18s}
+  .float-tools button:hover{background:var(--gold);color:var(--green-900);transform:translateY(-2px)}
+
+  /* ----- companion tools ----- */
+  .tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+  .tool-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:0 6px 18px rgba(10,46,35,.07);text-align:center;display:flex;flex-direction:column}
+  .tool-card .ic{font-size:1.6rem;margin-bottom:6px}
+  .tool-card h4{font-family:'Cormorant Garamond',serif;color:var(--green-800);font-size:1.25rem;margin-bottom:8px}
+  .tool-card .big{font-family:'Amiri',serif;font-size:1.5rem;color:var(--green-700);margin:4px 0}
+  .tool-card .lbl{color:var(--muted);font-size:.82rem}
+  .tool-card input{width:100%;border:1px solid var(--line);border-radius:10px;padding:9px 11px;font-family:inherit;margin:5px 0;background:var(--cream-2);color:var(--ink)}
+  .tool-card .btn{padding:9px 14px;font-size:.85rem;margin-top:6px;align-self:center}
+  .ptimes{list-style:none;text-align:left;margin-top:8px}
+  .ptimes li{display:flex;justify-content:space-between;padding:5px 2px;border-bottom:1px dashed var(--line);font-size:.9rem}
+  .ptimes li b{color:var(--green-700)}
+  .tasbih-count{font-size:2.6rem;font-weight:600;color:var(--gold);font-family:'Cormorant Garamond',serif}
+  .tasbih-dhikr{font-family:'Amiri',serif;font-size:1.4rem;color:var(--green-800)}
+  .compass{width:90px;height:90px;border-radius:50%;border:3px solid var(--line);margin:8px auto;position:relative;display:grid;place-items:center}
+  .compass .needle{font-size:1.8rem;transition:transform .4s;color:var(--gold)}
+
+  /* ----- bookmarks modal ----- */
+  .modal{position:fixed;inset:0;background:rgba(8,20,15,.6);display:none;z-index:80;padding:24px;overflow:auto}
+  .modal.open{display:block}
+  .modal-inner{max-width:760px;margin:40px auto;background:var(--cream-2);border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow)}
+  .modal-inner h3{color:var(--green-800);font-size:1.6rem;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
+  .modal-inner .close{cursor:pointer;border:none;background:none;font-size:1.4rem;color:var(--muted)}
+  .toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);background:var(--green-800);color:var(--gold-light);
+    padding:10px 18px;border-radius:30px;font-size:.85rem;opacity:0;pointer-events:none;transition:.25s;z-index:90;box-shadow:var(--shadow)}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .dedication{text-align:center;margin-top:22px;padding:18px;border-top:1px solid var(--line)}
+  .dedication .ar{font-family:'Amiri',serif;font-size:1.5rem;color:var(--gold);margin-bottom:6px}
+  .dedication p{color:var(--muted);font-style:italic;font-family:'Cormorant Garamond',serif;font-size:1.1rem}
+
+  /* ----- DARK MODE ----- */
+  body.dark{background:#0a1712;color:#e8e6db}
+  body.dark .alt{background:linear-gradient(180deg,#0c1a14,#0a1712)}
+  body.dark section{background:transparent}
+  body.dark .search-box,body.dark .res,body.dark .marja,body.dark .pillar,body.dark .no-res,body.dark .tool-card,body.dark .modal-inner{background:#11221b;border-color:rgba(216,182,95,.20)}
+  body.dark .rcard{background:linear-gradient(160deg,#11221b,#15281f);border-color:rgba(216,182,95,.20)}
+  body.dark .search-box input{color:#e8e6db}
+  body.dark .search-box input::placeholder{color:#7f9488}
+  body.dark .search-box select,body.dark #surahPick,body.dark #nahjSec,body.dark #nahjNum,body.dark .tool-card input{background:#0c1a14;color:#e8e6db;border-color:rgba(216,182,95,.20)}
+  body.dark .sec-head h2,body.dark .modal-inner h3{color:var(--gold-light)}
+  body.dark .sec-head p,body.dark .marja .desc,body.dark .marja .status,body.dark .pillar small,body.dark #about p,body.dark .res .meta span,body.dark .tool-card .lbl{color:#9bb0a4}
+  body.dark .marja h3,body.dark .pillar h4,body.dark .res .ar,body.dark .rcard .ar,body.dark .tool-card h4,body.dark .tool-card .big,body.dark .tasbih-dhikr{color:var(--gold-light)}
+  body.dark .res .tr,body.dark .rcard .tr,body.dark .ptimes li b{color:#e8e6db}
+  body.dark .marja .av{color:var(--gold-light)}
+  body.dark .ic-btn{background:#0c1a14;color:var(--gold-light)}
+
+  @media(max-width:820px){
+    .daily-grid{grid-template-columns:1fr}
+    nav.links{display:none}
+    .menu-btn{display:block}
+    nav.links.open{display:flex;position:absolute;top:68px;left:0;right:0;flex-direction:column;background:var(--green-900);padding:14px;border-bottom:1px solid var(--line)}
+    footer .cols{grid-template-columns:1fr}
+    .float-tools{right:10px;bottom:10px}
+    .float-tools button{width:42px;height:42px;font-size:.95rem}
+  }
+</style>
+</head>
+<body>
+
+<!-- ======= FLOATING TOOLS ======= -->
+<div class="float-tools">
+  <button id="themeBtn" title="Dark / light mode" onclick="toggleTheme()">🌙</button>
+  <button title="Smaller Arabic" onclick="setAr(-1)">A−</button>
+  <button title="Larger Arabic" onclick="setAr(1)">A+</button>
+  <button id="trBtn" title="Show / hide translation" onclick="toggleTr()">۞</button>
+  <button id="langBtn" title="Translation language (All / English / Urdu / Farsi)" onclick="cycleLang()">ALL</button>
+  <button title="My bookmarks" onclick="openBookmarks()">★</button>
+  <button title="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<!-- ======= BOOKMARKS MODAL ======= -->
+<div class="modal" id="bmModal">
+  <div class="modal-inner">
+    <h3>My Bookmarks ★ <button class="close" onclick="closeBookmarks()">✕</button></h3>
+    <div id="bmList"></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<!-- ======= NAV ======= -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">
+      <span class="mark">ن</span>
+      <span><b>Noor al-Hidayah</b><small>Light of Guidance</small></span>
+    </a>
+    <button class="menu-btn" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
+    <nav class="links" id="navlinks">
+      <a href="#daily">Daily Reminder</a>
+      <a href="#companion">Companion</a>
+      <a href="#search">Search</a>
+      <a href="#quran-library">Qur'an</a>
+      <a href="#nahj-library">Nahj al-Balagha</a>
+      <a href="#hadith-library">Hadith</a>
+      <a href="#duas">Ziyārāt &amp; Duʿās</a>
+      <a href="#history">History</a>
+      <a href="#quiz">Quiz</a>
+      <a href="#maraji">Maraji'</a>
+      <a href="#books">Books</a>
+      <a href="#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ======= HERO ======= -->
+<div class="pattern-bg" id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+      <h1>Noor al-Hidayah</h1>
+      <p class="sub">A portal of guidance for the followers of the Ahl al-Bayt (عليهم السلام) — the Maraji' al-Taqleed and their books, the Holy Qur'an, Nahj al-Balagha, the great hadith collections, and a unified search for authentic narrations.</p>
+      <div class="ornament">
+        <span class="line"></span>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 5.6L20 8l-4.5 4 1.4 6L12 14.8 7.1 18l1.4-6L4 8l5.6-.4z"/></svg>
+        <span class="line"></span>
+      </div>
+
+      <!-- DAILY REMINDER -->
+      <div class="daily" id="daily">
+        <div class="daily-grid">
+          <div class="rcard" id="card-quran">
+            <span class="tag"><span class="dot"></span> Verse of the Day · آية اليوم</span>
+            <div class="ar" id="q-ar"></div>
+            <div class="tr" id="q-tr"></div>
+            <div class="src" id="q-src"></div>
+          </div>
+          <div class="rcard" id="card-hadith">
+            <span class="tag"><span class="dot"></span> Narration of the Day · حديث اليوم</span>
+            <div class="ar" id="h-ar"></div>
+            <div class="tr" id="h-tr"></div>
+            <div class="src" id="h-src"></div>
+          </div>
+        </div>
+        <p class="daily-note">✦ Reminders renew each day — return tomorrow for new light. Always fulfil the wajibات, follow the straight path, and hold to the teachings of the Prophet Muḥammad (ص) and Imam al-Husayn (ع). ✦</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ======= DAILY COMPANION ======= -->
+<section class="alt" id="companion">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Your Daily Companion</span>
+      <h2>Date, Prayer Times &amp; Dhikr</h2>
+      <p>The Islamic date, prayer times for your city, the direction of the Qibla, and a tasbīḥ counter — all in one place.</p>
+    </div>
+    <div class="tools-grid">
+
+      <div class="tool-card">
+        <div class="ic">🌙</div>
+        <h4>Islamic Date</h4>
+        <div class="big" id="hijriDate">…</div>
+        <div class="lbl" id="gregDate"></div>
+        <div class="lbl" id="hijriAr" style="font-family:'Amiri',serif;font-size:1.05rem;margin-top:6px"></div>
+      </div>
+
+      <div class="tool-card">
+        <div class="ic">🕌</div>
+        <h4>Prayer Times</h4>
+        <input type="text" id="ptCity" placeholder="City or area (e.g. Karbala)" />
+        <input type="text" id="ptCountry" placeholder="Country (e.g. Iraq)" />
+        <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+          <button class="btn" onclick="getPrayerTimes()">Get Times</button>
+          <button class="btn" style="background:var(--green-700)" onclick="getPrayerTimesByGeo()">📍 My location</button>
+        </div>
+        <ul class="ptimes" id="ptList"></ul>
+        <div class="lbl" id="ptNote">Tip: if your district isn't found, try the nearest city — or tap 📍 My location.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="ic">🧭</div>
+        <h4>Qibla Direction</h4>
+        <div class="compass"><span class="needle" id="qiblaNeedle">🕋</span></div>
+        <div class="lbl" id="qiblaText">Find the direction to the Kaʿbah.</div>
+        <button class="btn" onclick="findQibla()">Find Qibla</button>
+      </div>
+
+      <div class="tool-card">
+        <div class="ic">📿</div>
+        <h4>Tasbīḥ Counter</h4>
+        <div class="tasbih-dhikr" id="tasbihDhikr">سُبْحَانَ اللَّه</div>
+        <div class="lbl" id="tasbihTarget"></div>
+        <div class="tasbih-count" id="tasbihCount">0</div>
+        <div style="display:flex;gap:8px;justify-content:center">
+          <button class="btn gold" onclick="tasbihTap()" style="padding:9px 22px">+1</button>
+          <button class="btn" onclick="tasbihReset()" style="background:var(--green-700)">Reset</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Duʿāʾ of the day -->
+    <div class="rcard" style="margin-top:22px;text-align:center;max-width:760px;margin-left:auto;margin-right:auto">
+      <span class="tag" style="justify-content:center"><span class="dot"></span> Duʿāʾ of the Day · دعاء اليوم</span>
+      <div class="ar" id="dua-ar" style="text-align:center;font-size:1.5rem"></div>
+      <div class="tr" id="dua-tr" style="text-align:center"></div>
+      <div class="src" id="dua-src"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= SEARCH ======= -->
+<section id="search">
+  <div class="wrap">
+    <div class="sec-head">
+      <svg class="star3d" viewBox="0 0 100 100" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round">
+          <rect x="22" y="22" width="56" height="56" rx="4"/>
+          <rect x="22" y="22" width="56" height="56" rx="4" transform="rotate(45 50 50)"/>
+        </g>
+        <circle cx="50" cy="50" r="9" fill="currentColor"/>
+      </svg>
+      <span class="kicker">Authentic Narrations</span>
+      <h2>Search the Words of Guidance</h2>
+      <p>Search in English or Arabic across the Qur'an, Nahj al-Balagha, the Four Books and the teachings of the Imams. Filter by source, then extend your search into the great digital libraries below.</p>
+    </div>
+
+    <div class="search-shell">
+      <div class="search-box">
+        <input type="text" id="q" placeholder="Search a topic, an Arabic phrase, or a word…  e.g. patience / صبر / justice" />
+        <select id="srcFilter" title="Filter by source">
+          <option value="">All sources</option>
+          <option value="Qur'an">Qur'an</option>
+          <option value="Nahj al-Balagha">Nahj al-Balagha</option>
+          <option value="Al-Kafi">Al-Kafi (full · 8 vols)</option>
+          <option value="Uyun Akhbar al-Rida">Uyun Akhbar al-Rida (full)</option>
+          <option value="Al-Khisal">Al-Khisal (full)</option>
+          <option value="Risalat al-Huquq">Risalat al-Huquq (full)</option>
+          <option value="Islamic Laws (Sistani)">Islamic Laws — Sistani (full)</option>
+          <option value="Al-Sahifa al-Sajjadiyya">Sahifa Sajjadiyya</option>
+          <option value="Bihar al-Anwar">Bihar al-Anwar</option>
+        </select>
+        <button class="btn gold" onclick="runSearch()">⌕ Search</button>
+      </div>
+      <div class="search-hint">
+        <span class="chip" onclick="quick('صبر')">صبر · Patience</span>
+        <span class="chip" onclick="quick('justice')">Justice · عدل</span>
+        <span class="chip" onclick="quick('knowledge')">Knowledge · علم</span>
+        <span class="chip" onclick="quick('Husayn')">Imam Husayn</span>
+        <span class="chip" onclick="quick('prayer')">Prayer · صلاة</span>
+        <span class="chip" onclick="quick('parents')">Parents · والدين</span>
+        <span class="chip" onclick="quick('truth')">Truth · حق</span>
+      </div>
+      <div style="text-align:center;margin-top:14px">
+        <button class="btn" id="hadSearchBtn" onclick="enableAllHadith()" style="background:var(--green-700)">📚 Also search the full hadith books in "All sources" (loads ~32 MB once)</button>
+      </div>
+
+      <div class="results" id="results"></div>
+
+      <!-- federated external search -->
+      <div class="ext-search">
+        <h3>Search the Full Libraries</h3>
+        <p>The full Qur'an (all 6,236 verses) is searched above. For the complete hadith corpora, open your query directly in the major authenticated Shia digital libraries:</p>
+        <div class="ext-btns" id="extBtns">
+          <a href="#" data-base="quran">📖 Qur'an (Tanzil)</a>
+          <a href="#" data-base="thaqalayn">📚 Hadith Library (Thaqalayn.net)</a>
+          <a href="#" data-base="alislam">🕌 Al-Islam.org Library</a>
+          <a href="#" data-base="nahj">⚔ Nahj al-Balagha</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= QURAN LIBRARY (browse) ======= -->
+<section class="alt" id="quran-library">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">The Holy Qur'an · المصحف الشريف</span>
+      <h2>Read the Qur'an — Sūrah by Sūrah</h2>
+      <p>The complete Book is held in this library — all 114 chapters and 6,236 verses, with English, Urdu (Jawadi) and Farsi (Makarem Shirazi) translation. Use the language button to switch. Select a chapter to read.</p>
+    </div>
+    <div class="search-shell">
+      <div class="search-box" style="justify-content:center">
+        <select id="surahPick" style="flex:1;min-width:240px;padding:12px 14px;font-size:1rem"></select>
+        <button class="btn" onclick="showSurah()">📖 Open Sūrah</button>
+      </div>
+      <div id="surahView" style="margin-top:24px"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= NAHJ AL-BALAGHA LIBRARY (browse) ======= -->
+<section id="nahj-library">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Nahj al-Balagha · نهج البلاغة</span>
+      <h2>The Peak of Eloquence — in Full</h2>
+      <p>The complete words of Amīr al-Muʾminīn ʿAlī (عليه السلام): all the Sermons, Letters and Sayings, with English translation. Choose a section and number to read.</p>
+    </div>
+    <div class="search-shell">
+      <div class="search-box" style="justify-content:center">
+        <select id="nahjSec" style="min-width:150px;padding:12px 14px;font-size:1rem" onchange="fillNahjNums()"></select>
+        <select id="nahjNum" style="flex:1;min-width:160px;padding:12px 14px;font-size:1rem"></select>
+        <button class="btn" onclick="showNahj()">⚔ Open</button>
+      </div>
+      <div id="nahjView" style="margin-top:24px"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= HADITH & FIQH LIBRARY (browse, lazy-loaded) ======= -->
+<section class="alt" id="hadith-library">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">The Great Books · المكتبة الحديثية والفقهية</span>
+      <h2>Read the Hadith Books &amp; Rulings in Full</h2>
+      <p>The full Arabic + English text of Al-Kāfī (8 vols), ʿUyūn Akhbār al-Riḍā, Al-Khiṣāl, Risālat al-Ḥuqūq — and the complete <em>Islamic Laws</em> of Āyatullāh al-Sīstānī. Pick a book and chapter; it loads on demand. You can also search each in full from the Search box above (choose the book in the filter).</p>
+    </div>
+    <div class="search-shell">
+      <div class="search-box" style="justify-content:center;flex-wrap:wrap">
+        <select id="hbBook" style="min-width:240px;padding:12px 14px;font-size:1rem" onchange="loadHbBook()"></select>
+        <select id="hbChapter" style="flex:1;min-width:220px;padding:12px 14px;font-size:1rem"></select>
+        <button class="btn" onclick="showHbChapter()">📖 Open</button>
+      </div>
+      <div id="hbView" style="margin-top:24px"></div>
+      <p style="text-align:center;color:var(--muted);font-size:.8rem;margin-top:16px">
+        Hadith from <a href="https://thaqalayn.net" target="_blank" rel="noopener" style="color:var(--green-600)">Thaqalayn.net</a> · Islamic Laws © the Office of Sayyid al-Sīstānī (<a href="https://www.sistani.org/english/book/48/" target="_blank" rel="noopener" style="color:var(--green-600)">sistani.org</a>). Always verify with your own Marjaʿ.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ======= MARAJI ======= -->
+<section class="alt" id="maraji">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Marji' al-Taqleed · مراجع التقليد</span>
+      <h2>The Grand Sources of Emulation</h2>
+      <p>The senior jurists whose verdicts (fatāwā) guide the practice of the believers. Search a Marjaʿ or one of their books, then open it in their official library or rulings (istiftāʾ) database.</p>
+    </div>
+    <div class="search-shell" style="margin-bottom:28px">
+      <div class="search-box">
+        <input type="text" id="marjaQ" placeholder="Ask a fiqh question or a book…  e.g. how to fast / khums / wudu / Sistani" />
+        <button class="btn gold" onclick="marjaSearch(document.getElementById('marjaQ').value)">⌕ Find Ruling</button>
+      </div>
+      <div class="search-hint">
+        <span class="chip" onclick="marjaAsk('how to fast')">How to fast</span>
+        <span class="chip" onclick="marjaAsk('khums')">Khums</span>
+        <span class="chip" onclick="marjaAsk('wudu')">Wudu</span>
+        <span class="chip" onclick="marjaAsk('rules of prayer')">Rules of prayer</span>
+        <span class="chip" onclick="marjaAsk('hajj')">Hajj</span>
+      </div>
+      <p style="text-align:center;color:var(--muted);font-size:.82rem;margin-top:10px">Ask a question to see Sayyid al-Sīstānī's ruling here, plus a link to each Marjaʿ's official answer. Or type a name/book to filter the cards.</p>
+      <div id="marjaResults" style="margin-top:18px"></div>
+    </div>
+    <div class="grid" id="marajiGrid"></div>
+  </div>
+</section>
+
+<!-- ======= CORE BOOKS ======= -->
+<section id="books">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">The Sacred Library · المكتبة</span>
+      <h2>The Foundational Books</h2>
+      <p>The Holy Qur'an and the great Shia collections — the foundation of belief, law and spirituality.</p>
+    </div>
+    <div class="books-grid" id="booksGrid"></div>
+  </div>
+</section>
+
+<!-- ======= PILLARS / FURU ======= -->
+<section class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Practice · الفروع</span>
+      <h2>The Pillars of Action</h2>
+      <p>Establish the wajibāt (obligations) and seek the pleasure of Allah.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar"><div class="ic">🕌</div><h4>Ṣalāh</h4><small>The daily prayers</small></div>
+      <div class="pillar"><div class="ic">🌙</div><h4>Ṣawm</h4><small>Fasting Ramaḍān</small></div>
+      <div class="pillar"><div class="ic">💰</div><h4>Khums</h4><small>The one-fifth due</small></div>
+      <div class="pillar"><div class="ic">🤲</div><h4>Zakāh</h4><small>Purifying charity</small></div>
+      <div class="pillar"><div class="ic">🕋</div><h4>Ḥajj</h4><small>Pilgrimage</small></div>
+      <div class="pillar"><div class="ic">⚔️</div><h4>Jihād</h4><small>Striving in truth</small></div>
+      <div class="pillar"><div class="ic">✅</div><h4>Amr bil Maʿrūf</h4><small>Enjoining good</small></div>
+      <div class="pillar"><div class="ic">🚫</div><h4>Nahy ʿan al-Munkar</h4><small>Forbidding evil</small></div>
+      <div class="pillar"><div class="ic">🤍</div><h4>Tawallā</h4><small>Love of Ahl al-Bayt</small></div>
+      <div class="pillar"><div class="ic">🛡️</div><h4>Tabarrā</h4><small>Disavowal of injustice</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= ZIYARAT & DUAS ======= -->
+<section id="duas">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Ziyārāt &amp; Supplications · الزيارات والأدعية</span>
+      <h2>Ziyārāt &amp; Duʿās</h2>
+      <p>The treasured ziyārāt and supplications — Ziyārat ʿĀshūrāʾ, Duʿāʾ Kumayl, Duʿāʾ al-Nudbah, Ḥadīth al-Kisāʾ and more — with Arabic and English, line by line.</p>
+    </div>
+    <div class="quiz-shell" style="max-width:900px">
+      <div class="search-box">
+        <input type="text" id="duaQ" placeholder="Search a ziyārah or duʿāʾ…  e.g. Kumayl / Ashura / Nudbah / كميل" />
+      </div>
+      <div class="dua-grid" id="duaGrid"></div>
+      <div id="duaReader" style="margin-top:24px"></div>
+      <p style="text-align:center;color:var(--muted);font-size:.8rem;margin-top:14px">Source: the official <a href="https://supplications.al-islam.org" target="_blank" rel="noopener" style="color:var(--green-600)">al-islam.org</a> Supplication Browser. Use the floating ۞ button for Arabic-only.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======= ISLAMIC HISTORY ======= -->
+<section class="alt" id="history">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Islamic History · التاريخ الإسلامي</span>
+      <h2>Events of Islamic History</h2>
+      <p>Search the great events — from the birth of the Prophet (ṣ) to Karbalāʾ and the Occultation — and read the full details in English, Arabic, Urdu or Farsi.</p>
+    </div>
+    <div class="quiz-shell" style="max-width:840px">
+      <div class="search-box">
+        <input type="text" id="evQ" placeholder="Search an event…  e.g. Karbala / Ghadir / Badr / غدیر / کربلا" />
+        <button class="btn gold" onclick="renderEvents()">⌕ Search</button>
+      </div>
+      <div class="quiz-setup" style="margin-top:14px">
+        <div class="quiz-group" style="padding:10px 14px">
+          <h4>Language</h4>
+          <div class="seg" id="evLang">
+            <button data-l="en" class="sel">English</button>
+            <button data-l="ar">العربية</button>
+            <button data-l="ur">اردو</button>
+            <button data-l="fa">فارسی</button>
+          </div>
+        </div>
+        <div class="quiz-group" style="padding:10px 14px">
+          <h4>Category</h4>
+          <div class="seg" id="evCat"></div>
+        </div>
+      </div>
+      <div class="ev-list" id="evList"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= QUIZ ======= -->
+<section id="quiz">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Test Your Knowledge · اختبر معلوماتك</span>
+      <h2>Islamic Knowledge Quiz</h2>
+      <p>From easy to hardest — across the Qur'an, the hadith, the Ahl al-Bayt (ʿa) and the Maraji's fiqh. Choose your level and language, and begin.</p>
+    </div>
+    <div class="quiz-shell">
+      <div id="quizStart">
+        <div class="quiz-setup">
+          <div class="quiz-group">
+            <h4>Difficulty</h4>
+            <div class="seg" id="quizDiff">
+              <button data-d="0" class="sel">Mixed</button>
+              <button data-d="1">Easy</button>
+              <button data-d="2">Medium</button>
+              <button data-d="3">Hard</button>
+              <button data-d="4">Hardest</button>
+            </div>
+          </div>
+          <div class="quiz-group">
+            <h4>Language</h4>
+            <div class="seg" id="quizLang">
+              <button data-l="en" class="sel">English</button>
+              <button data-l="ar">العربية</button>
+              <button data-l="ur">اردو</button>
+              <button data-l="fa">فارسی</button>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:22px">
+          <button class="btn gold" style="padding:14px 34px;font-size:1.05rem" onclick="quizStart()">✦ Start Quiz</button>
+        </div>
+      </div>
+      <div id="quizRun"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= ABOUT ======= -->
+<section id="about">
+  <div class="wrap" style="max-width:820px">
+    <div class="sec-head">
+      <span class="kicker">About this Portal</span>
+      <h2>Knowledge in the Service of Guidance</h2>
+    </div>
+    <p style="color:var(--muted);text-align:center;margin-bottom:18px">
+      Noor al-Hidayah gathers, in one respectful place, the names of the Maraji' al-Taqleed, the foundational books of the school of the Ahl al-Bayt (عليهم السلام), and a search tool for authentic narrations. The built-in collection contains a curated set of well-known verses and ḥadīth; for the complete texts, the portal links directly into the established, scholarly digital libraries.
+    </p>
+    <p style="color:var(--muted);text-align:center;font-size:.9rem">
+      <strong>A note on authenticity:</strong> Always confirm rulings (aḥkām) with the risāla of your own Marji', and verify narrations against their original chains. May Allah accept this effort and count it among the deeds done for His sake.
+    </p>
+
+    <div class="dedication">
+      <div class="ar">إِلَىٰ أُمِّي ۖ رَبِّ ارْحَمْهَا كَمَا رَبَّتْنِي صَغِيرًا</div>
+      <p>For the love of my mother — every good that comes from this work,<br>may its reward reach her. “My Lord, have mercy upon her as she raised me when I was small.”</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======= FOOTER ======= -->
+<footer>
+  <div class="wrap">
+    <div class="salawat">اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَآلِ مُحَمَّد</div>
+    <div class="cols">
+      <div>
+        <h4>Noor al-Hidayah · نور الهداية</h4>
+        <p>A Shia Islamic knowledge portal dedicated to the followers of the Ahl al-Bayt (عليهم السلام). Built to make the search for authentic guidance simple, beautiful, and accessible.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="#daily">Daily Reminder</a>
+        <a href="#search">Search Narrations</a>
+        <a href="#maraji">The Maraji'</a>
+        <a href="#books">The Books</a>
+      </div>
+      <div>
+        <h4>Libraries</h4>
+        <a href="https://www.al-islam.org" target="_blank" rel="noopener">Al-Islam.org</a>
+        <a href="https://thaqalayn.net" target="_blank" rel="noopener">Thaqalayn.net</a>
+        <a href="https://tanzil.net" target="_blank" rel="noopener">Tanzil (Qur'an)</a>
+        <a href="https://www.holyquran.net" target="_blank" rel="noopener">Holy Qur'an</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      Made in the love of the Ahl al-Bayt (ع). Verify all rulings with your own Marji'. © <span id="yr"></span> Noor al-Hidayah.
+    </div>
+  </div>
+</footer>
+
+<!-- Library data: full Qur'an (Arabic + English). Loaded as a global so it works
+     both on double-click (file://) and when served. -->
+<script src="library/quran.js"></script>
+<script src="library/nahj.js"></script>
+<script src="library/quiz.js"></script>
+<script src="library/quiz2.js"></script>
+<script src="library/events.js"></script>
+<script src="library/duas.js"></script>
+<script>
+/* ============================================================
+   DATA
+   ============================================================ */
+
+// --- Daily reminders (rotate by day-of-year) ---
+const dailyQuran = [
+  {ar:"إِنَّ مَعَ الْعُسْرِ يُسْرًا", tr:"Indeed, with hardship comes ease.", src:"Sūrat al-Sharḥ 94:6"},
+  {ar:"وَأَنْ لَيْسَ لِلْإِنْسَانِ إِلَّا مَا سَعَىٰ", tr:"And that man shall have nothing but what he strives for.", src:"Sūrat al-Najm 53:39"},
+  {ar:"إِنَّ اللَّهَ مَعَ الصَّابِرِينَ", tr:"Surely Allah is with the patient ones.", src:"Sūrat al-Baqarah 2:153"},
+  {ar:"فَاذْكُرُونِي أَذْكُرْكُمْ", tr:"So remember Me; I will remember you.", src:"Sūrat al-Baqarah 2:152"},
+  {ar:"وَقُل رَّبِّ زِدْنِي عِلْمًا", tr:"And say: My Lord, increase me in knowledge.", src:"Sūrat Ṭā Hā 20:114"},
+  {ar:"إِنَّمَا يُرِيدُ اللَّهُ لِيُذْهِبَ عَنكُمُ الرِّجْسَ أَهْلَ الْبَيْتِ وَيُطَهِّرَكُمْ تَطْهِيرًا", tr:"Allah only desires to remove all impurity from you, O People of the House, and to purify you completely.", src:"Sūrat al-Aḥzāb 33:33 (Verse of Purification)"},
+  {ar:"وَاعْتَصِمُوا بِحَبْلِ اللَّهِ جَمِيعًا وَلَا تَفَرَّقُوا", tr:"And hold fast, all together, to the rope of Allah, and do not be divided.", src:"Sūrat Āl ʿImrān 3:103"},
+  {ar:"إِنَّ اللَّهَ يَأْمُرُ بِالْعَدْلِ وَالْإِحْسَانِ", tr:"Indeed, Allah commands justice and excellence.", src:"Sūrat al-Naḥl 16:90"},
+  {ar:"وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا", tr:"And whoever is mindful of Allah — He will make a way out for him.", src:"Sūrat al-Ṭalāq 65:2"},
+  {ar:"وَبِالْوَالِدَيْنِ إِحْسَانًا", tr:"And to parents, good treatment.", src:"Sūrat al-Isrāʾ 17:23"},
+  {ar:"أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ", tr:"Surely in the remembrance of Allah do hearts find rest.", src:"Sūrat al-Raʿd 13:28"},
+  {ar:"وَتَعَاوَنُوا عَلَى الْبِرِّ وَالتَّقْوَىٰ", tr:"And cooperate in righteousness and piety.", src:"Sūrat al-Māʾidah 5:2"},
+];
+
+const dailyHadith = [
+  {ar:"مَنْ مَاتَ وَلَمْ يَعْرِفْ إِمَامَ زَمَانِهِ مَاتَ مِيتَةً جَاهِلِيَّةً", tr:"Whoever dies without knowing the Imam of his time dies the death of ignorance.", src:"Prophet Muḥammad (ص) — Al-Kafi, vol.1"},
+  {ar:"إِنِّي تَارِكٌ فِيكُمُ الثَّقَلَيْنِ كِتَابَ اللَّهِ وَعِتْرَتِي أَهْلَ بَيْتِي", tr:"I leave among you the two weighty things: the Book of Allah and my progeny, my Ahl al-Bayt.", src:"Prophet Muḥammad (ص) — Ḥadīth al-Thaqalayn"},
+  {ar:"هَيْهَاتَ مِنَّا الذِّلَّةُ", tr:"Far be it from us to accept humiliation!", src:"Imam al-Ḥusayn (ع) — ʿĀshūrāʾ"},
+  {ar:"إِنْ لَمْ يَكُنْ لَكُمْ دِينٌ وَكُنْتُمْ لَا تَخَافُونَ الْمَعَادَ فَكُونُوا أَحْرَارًا فِي دُنْيَاكُمْ", tr:"If you have no religion and do not fear the Day of Return, then at least be free in your worldly life.", src:"Imam al-Ḥusayn (ع) — Karbalāʾ"},
+  {ar:"طَلَبُ الْعِلْمِ فَرِيضَةٌ عَلَىٰ كُلِّ مُسْلِمٍ", tr:"Seeking knowledge is an obligation upon every Muslim.", src:"Prophet Muḥammad (ص) — Al-Kafi"},
+  {ar:"الْعَالِمُ بِزَمَانِهِ لَا تَهْجُمُ عَلَيْهِ اللَّوَابِسُ", tr:"One who is aware of his time will not be assaulted by confusions.", src:"Imam al-Ṣādiq (ع) — Al-Kafi"},
+  {ar:"مَنْ أَصْبَحَ لَا يَهْتَمُّ بِأُمُورِ الْمُسْلِمِينَ فَلَيْسَ بِمُسْلِمٍ", tr:"Whoever begins his day without concern for the affairs of the Muslims is not a Muslim.", src:"Prophet Muḥammad (ص) — Al-Kafi"},
+  {ar:"الصَّبْرُ مِنَ الْإِيمَانِ بِمَنْزِلَةِ الرَّأْسِ مِنَ الْجَسَدِ", tr:"Patience is to faith as the head is to the body.", src:"Imam ʿAlī (ع) — Nahj al-Balagha"},
+  {ar:"أَفْضَلُ النَّاسِ مَنْ عَشِقَ الْعِبَادَةَ فَعَانَقَهَا وَأَحَبَّهَا بِقَلْبِهِ", tr:"The best of people is the one who loves worship, embraces it, and loves it with his heart.", src:"Imam ʿAlī (ع) — Nahj al-Balagha"},
+  {ar:"النَّاسُ صِنْفَانِ إِمَّا أَخٌ لَكَ فِي الدِّينِ أَوْ نَظِيرٌ لَكَ فِي الْخَلْقِ", tr:"People are of two kinds: either your brother in faith or your equal in creation.", src:"Imam ʿAlī (ع) — Letter to Mālik al-Ashtar"},
+  {ar:"خَيْرُكُمْ خَيْرُكُمْ لِأَهْلِهِ", tr:"The best of you is the one who is best to his family.", src:"Prophet Muḥammad (ص)"},
+  {ar:"رِضَا اللَّهِ فِي رِضَا الْوَالِدَيْنِ", tr:"The pleasure of Allah lies in the pleasure of one's parents.", src:"Imam al-Ṣādiq (ع)"},
+];
+
+// --- Searchable narrations dataset ---
+const corpus = [
+  // Qur'an
+  {ar:"وَاصْبِرْ وَمَا صَبْرُكَ إِلَّا بِاللَّهِ", tr:"Be patient — and your patience is only by Allah.", src:"Qur'an", ref:"Sūrat al-Naḥl 16:127", tags:"patience sabr صبر perseverance"},
+  {ar:"يَا أَيُّهَا الَّذِينَ آمَنُوا اسْتَعِينُوا بِالصَّبْرِ وَالصَّلَاةِ", tr:"O you who believe, seek help through patience and prayer.", src:"Qur'an", ref:"Sūrat al-Baqarah 2:153", tags:"patience prayer sabr salah صبر صلاة"},
+  {ar:"إِنَّ اللَّهَ يَأْمُرُ بِالْعَدْلِ وَالْإِحْسَانِ وَإِيتَاءِ ذِي الْقُرْبَىٰ", tr:"Indeed Allah commands justice, excellence, and giving to kinsfolk.", src:"Qur'an", ref:"Sūrat al-Naḥl 16:90", tags:"justice adl عدل righteousness"},
+  {ar:"وَقَضَىٰ رَبُّكَ أَلَّا تَعْبُدُوا إِلَّا إِيَّاهُ وَبِالْوَالِدَيْنِ إِحْسَانًا", tr:"Your Lord has decreed that you worship none but Him, and be good to parents.", src:"Qur'an", ref:"Sūrat al-Isrāʾ 17:23", tags:"parents walidayn والدين family kindness"},
+  {ar:"إِنَّ الصَّلَاةَ كَانَتْ عَلَى الْمُؤْمِنِينَ كِتَابًا مَّوْقُوتًا", tr:"Indeed prayer is decreed upon the believers at fixed times.", src:"Qur'an", ref:"Sūrat al-Nisāʾ 4:103", tags:"prayer salah صلاة wajib obligation"},
+  {ar:"وَأَقِيمُوا الصَّلَاةَ وَآتُوا الزَّكَاةَ", tr:"And establish prayer and give the purifying alms.", src:"Qur'an", ref:"Sūrat al-Baqarah 2:43", tags:"prayer zakah salah صلاة زكاة charity wajib"},
+  {ar:"هَلْ يَسْتَوِي الَّذِينَ يَعْلَمُونَ وَالَّذِينَ لَا يَعْلَمُونَ", tr:"Are those who know equal to those who do not know?", src:"Qur'an", ref:"Sūrat al-Zumar 39:9", tags:"knowledge ilm علم learning"},
+  {ar:"إِنَّمَا وَلِيُّكُمُ اللَّهُ وَرَسُولُهُ وَالَّذِينَ آمَنُوا الَّذِينَ يُقِيمُونَ الصَّلَاةَ وَيُؤْتُونَ الزَّكَاةَ وَهُمْ رَاكِعُونَ", tr:"Your guardian is only Allah, His Messenger, and the believers who establish prayer and give alms while bowing.", src:"Qur'an", ref:"Sūrat al-Māʾidah 5:55 (Verse of Wilāyah)", tags:"wilayah ali guardianship imamate ولاية"},
+
+  // Nahj al-Balagha
+  {ar:"النَّاسُ نِيَامٌ فَإِذَا مَاتُوا انْتَبَهُوا", tr:"People are asleep; when they die, they awaken.", src:"Nahj al-Balagha", ref:"Imam ʿAlī (ع), Ḥikam", tags:"death awareness dunya world soul"},
+  {ar:"قِيمَةُ كُلِّ امْرِئٍ مَا يُحْسِنُهُ", tr:"The worth of every person is in what they do well.", src:"Nahj al-Balagha", ref:"Imam ʿAlī (ع), Saying 81", tags:"value skill excellence character worth"},
+  {ar:"الْبُخْلُ عَارٌ وَالْجُبْنُ مَنْقَصَةٌ", tr:"Miserliness is a disgrace, and cowardice is a defect.", src:"Nahj al-Balagha", ref:"Imam ʿAlī (ع), Saying 3", tags:"miserliness courage character generosity"},
+  {ar:"لَا تَكُنْ عَبْدَ غَيْرِكَ وَقَدْ جَعَلَكَ اللَّهُ حُرًّا", tr:"Do not be the slave of another, for Allah has made you free.", src:"Nahj al-Balagha", ref:"Imam ʿAlī (ع), Letter 31 to Imam al-Ḥasan", tags:"freedom dignity self husayn letter"},
+  {ar:"مَنْ نَصَبَ نَفْسَهُ لِلنَّاسِ إِمَامًا فَلْيَبْدَأْ بِتَعْلِيمِ نَفْسِهِ قَبْلَ تَعْلِيمِ غَيْرِهِ", tr:"Whoever sets himself up as a leader of people must begin by teaching himself before teaching others.", src:"Nahj al-Balagha", ref:"Imam ʿAlī (ع), Saying 73", tags:"leadership knowledge teaching self ilm"},
+  {ar:"الصَّبْرُ مِنَ الْإِيمَانِ بِمَنْزِلَةِ الرَّأْسِ مِنَ الْجَسَدِ", tr:"Patience is to faith what the head is to the body.", src:"Nahj al-Balagha", ref:"Imam ʿAlī (ع), Saying 82", tags:"patience sabr faith iman صبر"},
+
+  // Al-Kafi
+  {ar:"طَلَبُ الْعِلْمِ فَرِيضَةٌ عَلَى كُلِّ مُسْلِمٍ", tr:"Seeking knowledge is an obligation upon every Muslim.", src:"Al-Kafi", ref:"Imam al-Bāqir (ع), Kitāb Faḍl al-ʿIlm", tags:"knowledge ilm علم learning obligation wajib"},
+  {ar:"مَنْ تَعَلَّمَ الْعِلْمَ وَعَمِلَ بِهِ وَعَلَّمَ لِلَّهِ دُعِيَ فِي مَلَكُوتِ السَّمَاوَاتِ عَظِيمًا", tr:"Whoever learns knowledge, acts upon it, and teaches it for Allah's sake is called great in the kingdom of the heavens.", src:"Al-Kafi", ref:"Imam al-Ṣādiq (ع)", tags:"knowledge teaching action ilm sincerity"},
+  {ar:"كُونُوا دُعَاةً لِلنَّاسِ بِغَيْرِ أَلْسِنَتِكُمْ", tr:"Be callers to the people by other than your tongues (through your deeds).", src:"Al-Kafi", ref:"Imam al-Ṣādiq (ع)", tags:"dawah deeds character example conduct"},
+  {ar:"الْعِبَادَةُ ثَلَاثَةٌ قَوْمٌ عَبَدُوا اللَّهَ خَوْفًا فَتِلْكَ عِبَادَةُ الْعَبِيدِ", tr:"Worship is of three kinds: some worship Allah out of fear — that is the worship of slaves…", src:"Al-Kafi", ref:"Imam ʿAlī (ع) / Imam al-Ṣādiq (ع)", tags:"worship ibadah love fear sincerity"},
+
+  // Man la yahduruhu al-Faqih
+  {ar:"الصَّلَاةُ عَمُودُ الدِّينِ", tr:"Prayer is the pillar of religion.", src:"Man la yahduruhu al-Faqih", ref:"Prophet Muḥammad (ص)", tags:"prayer salah pillar deen صلاة wajib"},
+  {ar:"رَأْسُ الْعَقْلِ بَعْدَ الْإِيمَانِ بِاللَّهِ التَّوَدُّدُ إِلَى النَّاسِ", tr:"The height of wisdom, after faith in Allah, is showing affection to people.", src:"Man la yahduruhu al-Faqih", ref:"Imam al-Ṣādiq (ع)", tags:"wisdom kindness people love character"},
+
+  // Bihar al-Anwar
+  {ar:"أَنَا مَدِينَةُ الْعِلْمِ وَعَلِيٌّ بَابُهَا", tr:"I am the city of knowledge and ʿAlī is its gate.", src:"Bihar al-Anwar", ref:"Prophet Muḥammad (ص)", tags:"knowledge ali ilm city gate imamate"},
+  {ar:"حُسَيْنٌ مِنِّي وَأَنَا مِنْ حُسَيْنٍ", tr:"Ḥusayn is from me, and I am from Ḥusayn.", src:"Bihar al-Anwar", ref:"Prophet Muḥammad (ص)", tags:"husayn karbala love prophet ahlulbayt"},
+  {ar:"إِنَّ لِقَتْلِ الْحُسَيْنِ حَرَارَةً فِي قُلُوبِ الْمُؤْمِنِينَ لَا تَبْرُدُ أَبَدًا", tr:"Indeed, the martyrdom of al-Ḥusayn has left a heat in the hearts of the believers that will never cool.", src:"Bihar al-Anwar", ref:"Imam al-Ṣādiq (ع)", tags:"husayn karbala grief azadari ashura mourning"},
+
+  // Sahifa Sajjadiyya
+  {ar:"اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَآلِهِ وَاجْعَلْنِي مِنْ أَهْلِ التَّقْوَى", tr:"O Allah, bless Muḥammad and his family, and make me of the people of piety.", src:"Al-Sahifa al-Sajjadiyya", ref:"Imam al-Sajjād (ع), Supplication", tags:"dua supplication taqwa piety sajjad prayer"},
+  {ar:"وَفِّقْنِي لِمَا تُحِبُّ وَتَرْضَى", tr:"Grant me success in what You love and what pleases You.", src:"Al-Sahifa al-Sajjadiyya", ref:"Imam al-Sajjād (ع)", tags:"dua supplication success guidance pleasure"},
+
+  // Uyun Akhbar al-Rida
+  {ar:"صِلَةُ الْأَرْحَامِ تُحَسِّنُ الْخُلُقَ وَتُسَمِّحُ الْكَفَّ وَتُطَيِّبُ النَّفْسَ", tr:"Maintaining family ties improves one's character, makes the hand generous, and purifies the soul.", src:"Uyun Akhbar al-Rida", ref:"Imam al-Riḍā (ع)", tags:"family ties silat rahm kinship character"},
+  {ar:"الْإِيمَانُ أَرْبَعَةُ أَرْكَانٍ التَّوَكُّلُ عَلَى اللَّهِ وَالرِّضَا بِقَضَاءِ اللَّهِ", tr:"Faith has four pillars: trust in Allah, contentment with Allah's decree…", src:"Uyun Akhbar al-Rida", ref:"Imam al-Riḍā (ع)", tags:"faith iman trust tawakkul contentment rida"},
+];
+
+// --- Maraji' al-Taqleed ---
+const maraji = [
+  {n:"Sayyid Ali al-Sistani", ar:"س", status:"Najaf · Living", alive:true, desc:"The most widely followed Marji' today, based in the holy city of Najaf, known for his measured jurisprudence.", books:["Minhāj al-Ṣāliḥīn","Tawḍīḥ al-Masāʾil","Al-Masāʾil al-Muntakhaba","Islamic Laws (English)"], site:"https://www.sistani.org/english/"},
+  {n:"Sayyid Ali Khamenei", ar:"خ", status:"Iran · Late (raḥimahu Allāh)", alive:false, desc:"A Marji' followed by many, with extensive rulings on contemporary issues. May Allah have mercy upon him.", books:["Ajwibat al-Istiftāʾāt","Risāla-yi Ājwiba","Practical Laws of Islam"], site:"https://www.leader.ir/en"},
+  {n:"Sayyid Wahid Khorasani", ar:"و", status:"Qom · Living", alive:true, desc:"A senior teacher of the Qom seminary, respected for his depth in usul and theology.", books:["Minhāj al-Ṣāliḥīn","Tawḍīḥ al-Masāʾil"], site:"https://wahidkhorasani.com/"},
+  {n:"Shaykh Makarem Shirazi", ar:"م", status:"Qom · Living", alive:true, desc:"A prolific Marji' and exegete, author of the renowned Qur'anic commentary Tafsīr Nemūneh.", books:["Tafsīr Nemūneh","Tawḍīḥ al-Masāʾil","Al-Amthal fī Tafsīr"], site:"https://makarem.ir/main.aspx?lid=2"},
+  {n:"Sayyid Sadiq al-Shirazi", ar:"ص", status:"Qom · Living", alive:true, desc:"A Marji' with a wide following, known for his works on ethics and jurisprudence.", books:["Bayān al-Fiqh","Tawḍīḥ al-Masāʾil"], site:"https://www.english.shirazi.ir/"},
+  {n:"Shaykh Bashir al-Najafi", ar:"ب", status:"Najaf · Living", alive:true, desc:"One of the four grand Maraji' of the Najaf seminary (Ḥawza).", books:["Minhāj al-Ṣāliḥīn","Tawḍīḥ al-Masāʾil"], site:"https://alnajafy.com/en"},
+  {n:"Sayyid Abu al-Qasim al-Khoei", ar:"ق", status:"Najaf · Late (d.1992)", alive:false, desc:"One of the greatest jurists of the 20th century; teacher of many current Maraji'.", books:["Minhāj al-Ṣāliḥīn","Al-Bayān fī Tafsīr al-Qurʾān","Muʿjam Rijāl al-Ḥadīth"], site:"https://www.al-khoei.us/"},
+  {n:"Imam Ruhollah al-Khomeini", ar:"خ", status:"Qom · Late (d.1989)", alive:false, desc:"Founder of the Islamic Republic and a Marji' of immense influence in fiqh and irfan.", books:["Taḥrīr al-Wasīla","Tawḍīḥ al-Masāʾil","Forty Hadith"], site:"https://www.imam-khomeini.ir/en"},
+];
+
+// --- Core books ---
+const coreBooks = [
+  {ar:"القرآن الكريم", n:"The Holy Qur'an", d:"The eternal word of Allah, revealed to the Prophet Muḥammad (ص). Full text in this library.", url:"#quran-library"},
+  {ar:"نهج البلاغة", n:"Nahj al-Balagha", d:"Sermons, letters & sayings of Imam ʿAlī (ع), compiled by al-Sharīf al-Raḍī. Full text in this library.", url:"#nahj-library"},
+  {ar:"الصحيفة السجادية", n:"Al-Sahifa al-Sajjadiyya", d:"The 'Psalms of Islam' — supplications of Imam al-Sajjād (ع).", url:"https://www.al-islam.org/sahifa-al-kamilah-al-sajjadiyya"},
+  {ar:"الكافي", n:"Al-Kafi", d:"The foremost of the Four Books, by Shaykh al-Kulaynī.", url:"https://thaqalayn.net/book/1"},
+  {ar:"من لا يحضره الفقيه", n:"Man la yahduruhu al-Faqih", d:"Of the Four Books, by Shaykh al-Ṣadūq.", url:"https://thaqalayn.net/"},
+  {ar:"تهذيب الأحكام", n:"Tahdhib al-Ahkam", d:"Of the Four Books, by Shaykh al-Ṭūsī.", url:"https://thaqalayn.net/"},
+  {ar:"الاستبصار", n:"Al-Istibsar", d:"Of the Four Books, by Shaykh al-Ṭūsī.", url:"https://thaqalayn.net/"},
+  {ar:"بحار الأنوار", n:"Bihar al-Anwar", d:"The vast hadith encyclopaedia of ʿAllāma al-Majlisī.", url:"https://www.al-islam.org/"},
+  {ar:"مفاتيح الجنان", n:"Mafatih al-Jinan", d:"The beloved book of supplications & ziyārāt by Shaykh ʿAbbās al-Qummī.", url:"https://www.al-islam.org/"},
+];
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+function dayIndex(len){
+  const now = new Date();
+  const start = new Date(now.getFullYear(),0,0);
+  const diff = now - start;
+  const day = Math.floor(diff / 86400000);
+  return day % len;
+}
+
+// daily
+(function(){
+  const q = dailyQuran[dayIndex(dailyQuran.length)];
+  document.getElementById('q-ar').textContent = q.ar;
+  document.getElementById('q-tr').textContent = '“'+q.tr+'”';
+  document.getElementById('q-src').textContent = '— '+q.src;
+  const h = dailyHadith[dayIndex(dailyHadith.length+ ((new Date()).getFullYear()%3))]; // slight offset so the two don't always pair the same
+  const hi = dailyHadith[dayIndex(dailyHadith.length)];
+  document.getElementById('h-ar').textContent = hi.ar;
+  document.getElementById('h-tr').textContent = '“'+hi.tr+'”';
+  document.getElementById('h-src').textContent = '— '+hi.src;
+})();
+
+// maraji (filterable)
+function marjaDomain(m){ try{ return new URL(m.site).hostname.replace(/^www\./,''); }catch(e){ return ''; } }
+function normLat(s){ return (s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[ʾʿʼ'`]/g,'').toLowerCase(); }
+function renderMaraji(q){
+  q=normLat((q||'').trim());
+  const list = maraji.filter(m=> !q
+    || normLat(m.n).includes(q)
+    || normLat(m.books.join(' • ')).includes(q)
+    || normLat(m.status+' '+m.desc).includes(q));
+  const grid=document.getElementById('marajiGrid');
+  if(!list.length){ grid.innerHTML='<div class="no-res">No Marjaʿ or book matched “'+q+'”.</div>'; return; }
+  grid.innerHTML = list.map(m=>{
+    const i=maraji.indexOf(m);
+    return `<div class="marja">
+    <div class="top">
+      <div class="av">${m.ar}</div>
+      <div>
+        <h3>${m.n}</h3>
+        <div class="status ${m.alive?'alive':''}">${m.status}</div>
+      </div>
+    </div>
+    <p class="desc">${m.desc}</p>
+    <ul class="books">${m.books.map((b,bi)=>`<li><a href="#" onclick="marjaBook(${i},${bi});return false;" style="color:inherit">${b} <span style="color:var(--gold);font-size:.8rem">⌕</span></a></li>`).join('')}</ul>
+    <div class="actions">
+      <a href="${m.site}" target="_blank" rel="noopener">📚 Official Library ↗</a>
+      <button onclick="marjaRulings(${i})">⌕ Search Rulings</button>
+    </div>
+  </div>`;
+  }).join('');
+}
+function marjaBook(i,bi){
+  const m=maraji[i], book=m.books[bi], d=marjaDomain(m);
+  const q = d ? ('site:'+d+' '+book) : (book+' '+m.n);
+  window.open('https://www.google.com/search?q='+encodeURIComponent(q),'_blank');
+}
+function marjaRulings(i){
+  const m=maraji[i], d=marjaDomain(m);
+  const extra=(document.getElementById('marjaQ')?.value||'').trim();
+  const q = (d ? 'site:'+d+' ' : '"'+m.n+'" ') + (extra || 'masail ruling fatwa istifta');
+  window.open('https://www.google.com/search?q='+encodeURIComponent(q),'_blank');
+}
+renderMaraji('');
+document.getElementById('marjaQ').addEventListener('input',e=>renderMaraji(e.target.value));
+document.getElementById('marjaQ').addEventListener('keydown',e=>{ if(e.key==='Enter') marjaSearch(e.target.value); });
+function marjaAsk(q){ document.getElementById('marjaQ').value=q; marjaSearch(q); document.getElementById('maraji').scrollIntoView({behavior:'smooth'}); }
+
+// Ask a fiqh question: show Sistani's own ruling inline + a link to each Marjaʿ's official answer
+// Fiqh books that have full searchable text (others get an official-search link)
+const FIQH_FILES=[
+  {key:'sistani', file:'library/sistani.js'},
+  {key:'khui',    file:'library/fiqh/khui.js'},
+  {key:'guide',   file:'library/fiqh/guide.js'}
+];
+const FIQH_COVERED=/sistani|khoei|khamenei|khomeini/i;   // Maraji whose rulings show inline
+function loadAllFiqh(){ return Promise.all(FIQH_FILES.map(f=>loadScript(f.file))); }
+// rank a fiqh book's sections by title relevance, return matching rulings
+function fiqhRulings(book, terms, limit){
+  const scored=[];
+  for(const s of book.sec){
+    const tn=norm(s.t||'');
+    const tscore=terms.reduce((a,t)=>a+(tn.includes(t)?1:0),0);
+    const matched=s.p.filter(p=>terms.every(t=>norm(p).includes(t)));
+    if(matched.length) scored.push({tscore, t:s.t, ps:matched});
+  }
+  scored.sort((a,b)=>b.tscore-a.tscore);
+  const out=[];
+  for(const s of scored){ for(const p of s.ps){ out.push({tr:p, plain:true, ref:s.t}); if(out.length>=limit) return out; } }
+  return out;
+}
+
+function marjaSearch(q){
+  q=(q||'').trim();
+  renderMaraji(q);                 // also filter the cards
+  const box=document.getElementById('marjaResults');
+  if(q.length<3){ box.innerHTML=''; return; }
+  // links for the Maraji whose books aren't bundled as text
+  const links = maraji.filter(m=>!FIQH_COVERED.test(m.n)).map(m=>{
+    const d=marjaDomain(m);
+    const url='https://www.google.com/search?q='+encodeURIComponent((d?'site:'+d+' ':'"'+m.n+'" ')+q);
+    const shortName=m.n.replace(/^(Sayyid|Shaykh|Imam)\s+/,'');
+    return `<a class="chip" target="_blank" rel="noopener" href="${url}" style="text-decoration:none">${shortName} ↗</a>`;
+  }).join('');
+  box.innerHTML =
+    `<div style="text-align:center;color:var(--green-800);font-weight:600;margin-bottom:6px">“${q}” — the ruling according to the Maraji:</div>`+
+    (links?`<div style="text-align:center;color:var(--muted);font-size:.82rem;margin-bottom:6px">Other Maraji (opens their official rulings):</div><div class="search-hint">${links}</div>`:'')+
+    `<div id="marjaInline" style="margin-top:18px"></div>`;
+  const inline=document.getElementById('marjaInline');
+  inline.innerHTML='<div class="no-res">Loading the Maraji’s rulings…</div>';
+  loadAllFiqh().then(()=>{
+    const STOP=new Set(['how','to','the','a','an','of','is','are','do','does','can','what','when','where','why','for','in','on','and','my','me','should','must','it','be','with','i','you','your','about','rules','ruling','law','laws']);
+    let terms=norm(q).split(/\s+/).filter(Boolean);
+    const content=terms.filter(t=>!STOP.has(t) && t.length>2);
+    if(content.length) terms=content;
+    if(terms.length>1){ terms=[terms.sort((a,b)=>b.length-a.length)[0]]; } // focus on the key topic word
+    let html='';
+    for(const f of FIQH_FILES){
+      const book=window.LIB_FIQH && window.LIB_FIQH[f.key]; if(!book) continue;
+      const hits=fiqhRulings(book, terms, 4);
+      if(!hits.length) continue;
+      html += `<div style="margin-top:8px"><h3 style="text-align:center;color:var(--green-800);font-size:1.35rem;margin-bottom:2px">📘 ${book.marja}</h3>`+
+              `<p style="text-align:center;color:var(--muted);font-size:.78rem;margin-bottom:12px">${book.name}</p>`+
+              hits.map(h=>resCard({tr:h.tr,plain:true,ref:h.ref})).join('')+`</div>`;
+    }
+    inline.innerHTML = html ||
+      `<div class="no-res">No direct ruling matched “${q}”. Try a simpler keyword (e.g. “fasting”, “wudu”, “khums”), or use the links above for the other Maraji.</div>`;
+  }).catch(()=>{ inline.innerHTML='<div class="no-res">Could not load the rulings (offline?). Use the per-Marjaʿ links above.</div>'; });
+}
+
+// books
+document.getElementById('booksGrid').innerHTML = coreBooks.map(b=>`
+  <div class="book">
+    <div>
+      <div class="ar">${b.ar}</div>
+      <h3>${b.n}</h3>
+      <p>${b.d}</p>
+    </div>
+    ${b.url.charAt(0)==='#'
+       ? `<a href="${b.url}">Read here ↓</a>`
+       : `<a href="${b.url}" target="_blank" rel="noopener">Read / Search ↗</a>`}
+  </div>`).join('');
+
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ============================================================
+   SEARCH
+   ============================================================ */
+function norm(s){
+  return (s||'').normalize('NFD')
+    .replace(/[̀-ͯ]/g,'')
+    .replace(/[ʾʿʼˀ`']/g,'')
+    .toLowerCase()
+    .replace(/[ؐ-ًؚ-ٰٟۖ-ۭـ]/g,'')
+    .replace(/[آأإٱ]/g,'ا')
+    .replace(/[ىیے]/g,'ي')
+    .replace(/ؤ/g,'و')
+    .replace(/ئ/g,'ي')
+    .replace(/[ةہۃھ]/g,'ه')
+    .replace(/ک/g,'ك');
+}
+function highlight(text,terms){
+  let out = text;
+  terms.filter(t=>t.length>1).forEach(t=>{
+    try{ out = out.replace(new RegExp('('+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi'),'<mark>$1</mark>'); }catch(e){}
+  });
+  return out;
+}
+
+// Search the complete Qur'an held in the library (window.LIB_QURAN)
+function searchQuran(terms, limit){
+  if(typeof window.LIB_QURAN==='undefined' || !terms.length) return [];
+  const out=[];
+  for(const su of LIB_QURAN){
+    for(const v of su.v){
+      const hay = norm(v[1]+' '+v[2]+' '+(v[3]||'')+' '+(v[4]||''));
+      if(terms.every(t=>hay.includes(t))){
+        out.push({ar:v[1], tr:v[2], ur:v[3]||'', fa:v[4]||'', src:"Qur'an", ref:'Sūrat '+su.nt+' · '+su.s+':'+v[0]});
+        if(out.length>=limit) return out;
+      }
+    }
+  }
+  return out;
+}
+
+// Search the complete Nahj al-Balagha held in the library (window.LIB_NAHJ)
+function nahjRef(it){
+  const A = LIB_NAHJ.abbr[it[0]];
+  const part = (typeof it[2]==='number' && it[2]>1) ? ' · ¶'+it[2] : '';
+  return A+' '+it[1]+part;
+}
+function searchNahj(terms, limit){
+  if(typeof window.LIB_NAHJ==='undefined' || !terms.length) return [];
+  const out=[];
+  for(const it of LIB_NAHJ.items){
+    const hay = norm((it[3]||'')+' '+(it[4]||''));
+    if(terms.every(t=>hay.includes(t))){
+      out.push({ar:it[3], tr:it[4], src:"Nahj al-Balagha", ref:nahjRef(it)});
+      if(out.length>=limit) return out;
+    }
+  }
+  return out;
+}
+
+/* ============================================================
+   FULL EXTERNAL BOOKS — lazy loaded (hadith + Sistani fiqh)
+   ============================================================ */
+const _scriptCache={};
+function loadScript(src){
+  if(_scriptCache[src]) return _scriptCache[src];
+  _scriptCache[src]=new Promise((res,rej)=>{
+    const s=document.createElement('script'); s.src=src;
+    s.onload=()=>res(true); s.onerror=()=>rej(new Error('Failed to load '+src));
+    document.head.appendChild(s);
+  });
+  return _scriptCache[src];
+}
+// source-filter value -> hadith book keys (files in library/hadith/<key>.js)
+const SOURCE_BOOKS={
+  "Al-Kafi":['kafi1','kafi2','kafi3','kafi4','kafi5','kafi6','kafi7','kafi8'],
+  "Uyun Akhbar al-Rida":['uyun1','uyun2'],
+  "Al-Khisal":['khisal'],
+  "Risalat al-Huquq":['huquq']
+};
+function loadHadith(key){ return loadScript('library/hadith/'+key+'.js').then(()=>window.LIB_HADITH&&window.LIB_HADITH[key]); }
+function loadSistani(){ return loadScript('library/sistani.js').then(()=>window.LIB_SISTANI); }
+
+function searchHadithBooks(keys, terms, limit){
+  const out=[];
+  for(const key of keys){
+    const b=window.LIB_HADITH&&window.LIB_HADITH[key]; if(!b) continue;
+    for(const ch of b.ch){
+      for(const hd of ch.h){
+        const hay=norm((hd[1]||'')+' '+(hd[2]||''));
+        if(terms.every(t=>hay.includes(t))){
+          out.push({ar:hd[1], tr:hd[2], src:b.name, ref:(ch.t||'')+' · #'+hd[0]});
+          if(out.length>=limit) return out;
+        }
+      }
+    }
+  }
+  return out;
+}
+function searchSistani(terms, limit){
+  const b=window.LIB_SISTANI; if(!b) return [];
+  const out=[];
+  for(const s of b.sec){
+    for(const p of s.p){
+      if(terms.every(t=>norm(p).includes(t))){
+        out.push({tr:p, plain:true, src:'Islamic Laws · Sistani', ref:s.t});
+        if(out.length>=limit) return out;
+      }
+    }
+  }
+  return out;
+}
+// Question-style search: rank sections by how many query terms hit the title
+function sistaniRulings(terms, limit){
+  const b=window.LIB_SISTANI; if(!b) return [];
+  const scored=[];
+  for(const s of b.sec){
+    const tn=norm(s.t||'');
+    const tscore=terms.reduce((a,t)=>a+(tn.includes(t)?1:0),0);
+    const matched=s.p.filter(p=>terms.every(t=>norm(p).includes(t)));
+    if(matched.length) scored.push({tscore, t:s.t, ps:matched});
+  }
+  scored.sort((a,b)=>b.tscore-a.tscore);
+  const out=[];
+  for(const s of scored){
+    for(const p of s.ps){ out.push({tr:p, plain:true, src:'Islamic Laws · Sistani', ref:s.t}); if(out.length>=limit) return out; }
+  }
+  return out;
+}
+function renderBookResults(all, raw, label, capped){
+  const box=document.getElementById('results');
+  if(!all.length){ box.innerHTML='<div class="no-res">No match for “'+raw+'” in '+label+'.</div>'; return; }
+  const terms=norm(raw).split(/\s+/).filter(Boolean);
+  const note=`<div style="text-align:center;color:var(--muted);font-size:.86rem;margin-bottom:4px">${all.length}${capped?'+':''} result${all.length!==1?'s':''} · ${label}</div>`;
+  box.innerHTML=note+all.map(h=>resCard({ar:h.ar,tr:h.tr,plain:h.plain,src:h.src,ref:h.ref,terms})).join('');
+}
+function runBookSearch(filter, raw, terms){
+  const box=document.getElementById('results');
+  if(!raw){ box.innerHTML='<div class="no-res">Type a word to search the full <b>'+filter+'</b>.</div>'; return; }
+  if(filter==='Islamic Laws (Sistani)'){
+    box.innerHTML='<div class="no-res">Loading Islamic Laws (Sistani)… ⏳</div>';
+    loadSistani().then(()=>renderBookResults(searchSistani(terms,80), raw, 'Islamic Laws · Sistani', searchSistani(terms,81).length>80))
+      .catch(()=>box.innerHTML='<div class="no-res">Could not load Islamic Laws (offline?).</div>');
+    return;
+  }
+  const keys=SOURCE_BOOKS[filter];
+  box.innerHTML='<div class="no-res">Loading '+filter+' — '+keys.length+' volume'+(keys.length>1?'s':'')+'… ⏳<br><span style="font-size:.8rem">(first time only; cached afterwards)</span></div>';
+  Promise.all(keys.map(loadHadith)).then(()=>{
+    const hits=searchHadithBooks(keys,terms,80);
+    renderBookResults(hits, raw, filter, searchHadithBooks(keys,terms,81).length>80);
+  }).catch(()=>box.innerHTML='<div class="no-res">Could not load '+filter+' (offline?).</div>');
+}
+
+function runSearch(){
+  const raw = document.getElementById('q').value.trim();
+  const filter = document.getElementById('srcFilter').value;
+  const box = document.getElementById('results');
+  updateExt(raw);
+
+  if(!raw && !filter){ box.innerHTML=''; return; }
+  const nq = norm(raw);
+  const terms = nq.split(/\s+/).filter(Boolean);
+
+  // Full external books (lazy-loaded on demand)
+  if(filter && (SOURCE_BOOKS[filter] || filter==='Islamic Laws (Sistani)')){
+    return runBookSearch(filter, raw, terms);
+  }
+
+  let hits = corpus.filter(item=>{
+    if(filter && item.src!==filter) return false;
+    if(!raw) return true;
+    const hay = norm(item.ar+' '+item.tr+' '+item.tags+' '+item.src+' '+item.ref);
+    return terms.every(t=> hay.includes(t));
+  });
+
+  // Full Qur'an search (skipped only when filtered to a non-Qur'an source)
+  let quranHits = [];
+  if(raw && (!filter || filter==="Qur'an")){ quranHits = searchQuran(terms, 60); }
+  // Full Nahj al-Balagha search
+  let nahjHits = [];
+  if(raw && (!filter || filter==="Nahj al-Balagha")){ nahjHits = searchNahj(terms, 50); }
+  // Full hadith books (only when loaded via the toggle, and not narrowed to a different source)
+  let hadithHits = [];
+  if(raw && hadithSearchOn && !filter){ hadithHits = searchHadithBooks(ALL_HADITH_KEYS, terms, 80); }
+  // the full texts cover any curated duplicates when browsing everything
+  if(!filter){ hits = hits.filter(h=>h.src!=="Qur'an" && h.src!=="Nahj al-Balagha"); }
+  const all = hits.concat(nahjHits, hadithHits, quranHits);
+
+  if(all.length===0){
+    box.innerHTML = `<div class="no-res">No match in the built-in collection for “${raw||filter}”.<br><br>Try the <b>full libraries</b> below — your search has been prepared for them.</div>`;
+    return;
+  }
+  const capped = quranHits.length>=60 || nahjHits.length>=50;
+  const capNote = capped ? '+ (some matches capped — refine to narrow)' : '';
+  const count = `<div style="text-align:center;color:var(--muted);font-size:.86rem;margin-bottom:4px">${all.length} result${all.length!==1?'s':''}${capNote} · narrations, full Qur'an &amp; Nahj al-Balagha</div>`;
+  box.innerHTML = count + all.map(h=>resCard({ar:h.ar,tr:h.tr,ur:h.ur,fa:h.fa,src:h.src,ref:h.ref,terms})).join('');
+}
+
+function quick(t){ document.getElementById('q').value=t; runSearch(); document.getElementById('search').scrollIntoView({behavior:'smooth'}); }
+function searchMarja(name){
+  const url = 'https://www.google.com/search?q='+encodeURIComponent('"'+name+'" fatwa ruling masail '+ (document.getElementById('q').value||''));
+  window.open(url,'_blank');
+}
+
+// federated external search links
+function updateExt(q){
+  const enc = encodeURIComponent(q||'');
+  const map = {
+    quran:    'https://tanzil.net/#search/quran/'+enc,
+    thaqalayn:'https://thaqalayn.net/search?q='+enc,
+    alislam:  'https://www.al-islam.org/search?query='+enc,
+    nahj:     'https://www.google.com/search?q='+encodeURIComponent('Nahj al-Balagha '+(q||''))
+  };
+  document.querySelectorAll('#extBtns a').forEach(a=>{
+    a.href = map[a.dataset.base];
+  });
+}
+updateExt('');
+
+/* ---- Qur'an library browser ---- */
+(function(){
+  const sel=document.getElementById('surahPick');
+  if(sel && typeof window.LIB_QURAN!=='undefined'){
+    sel.innerHTML = LIB_QURAN.map(s=>`<option value="${s.s}">${s.s}. ${s.nt} — ${s.ne} (${s.v.length})</option>`).join('');
+  }
+})();
+function showSurah(scrollAyah){
+  if(typeof window.LIB_QURAN==='undefined') return;
+  const id=+document.getElementById('surahPick').value;
+  const idx=LIB_QURAN.findIndex(s=>s.s===id);
+  const su=LIB_QURAN[idx];
+  const view=document.getElementById('surahView');
+  if(!su){view.innerHTML='';return;}
+  if(history.replaceState) history.replaceState(null,'','#'+su.s);
+  const prev=idx>0?LIB_QURAN[idx-1]:null, next=idx<LIB_QURAN.length-1?LIB_QURAN[idx+1]:null;
+  const nav=`<div class="reader-nav">
+      <button class="btn" ${prev?'':'disabled'} onclick="gotoSurah(${prev?prev.s:0})">‹ ${prev?prev.nt:''}</button>
+      <button class="btn" ${next?'':'disabled'} onclick="gotoSurah(${next?next.s:0})">${next?next.nt:''} ›</button>
+    </div>`;
+  const basmala=(id!==1 && id!==9)
+    ? `<div class="res" style="text-align:center;border-left-color:var(--gold)"><div class="ar arabic" style="text-align:center">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div></div>` : '';
+  view.innerHTML = `<div style="text-align:center;margin-bottom:14px">
+      <div class="ar arabic" style="font-size:2rem;color:var(--green-800)">${su.na}</div>
+      <div style="color:var(--muted)">Sūrah ${su.s} · ${su.nt} — ${su.ne} · ${su.v.length} verses</div>
+    </div>` + nav + basmala + su.v.map(v=>resCard({ar:v[1],tr:v[2],ur:v[3]||'',fa:v[4]||'',ref:'Qurʼan '+su.s+':'+v[0],num:v[0],audio:ayahAudio(su.s,v[0])})).join('') + nav;
+  if(scrollAyah){ const cards=view.querySelectorAll('.res'); const off=(id!==1&&id!==9?1:0); const el=cards[off+(scrollAyah-1)]; if(el) el.scrollIntoView({behavior:'smooth',block:'center'}); }
+  else view.scrollIntoView({behavior:'smooth'});
+}
+function gotoSurah(s){ if(!s) return; document.getElementById('surahPick').value=s; showSurah(); }
+
+/* ---- Nahj al-Balagha library browser ---- */
+let nahjIndex = [];
+(function(){
+  if(typeof window.LIB_NAHJ==='undefined') return;
+  // build sorted unique chapter numbers per section
+  const seen=[{},{},{}];
+  LIB_NAHJ.items.forEach(it=>{ seen[it[0]][it[1]]=true; });
+  nahjIndex = seen.map(o=>Object.keys(o).map(Number).sort((a,b)=>a-b));
+  const sec=document.getElementById('nahjSec');
+  if(sec){
+    sec.innerHTML = LIB_NAHJ.abbr.map((a,i)=>`<option value="${i}">${a}s</option>`).join('');
+    fillNahjNums();
+  }
+})();
+function fillNahjNums(){
+  if(typeof window.LIB_NAHJ==='undefined') return;
+  const si=+document.getElementById('nahjSec').value;
+  const abbr=LIB_NAHJ.abbr[si];
+  document.getElementById('nahjNum').innerHTML =
+    nahjIndex[si].map(n=>`<option value="${n}">${abbr} ${n}</option>`).join('');
+}
+function showNahj(){
+  if(typeof window.LIB_NAHJ==='undefined') return;
+  const si=+document.getElementById('nahjSec').value;
+  const num=+document.getElementById('nahjNum').value;
+  const abbr=LIB_NAHJ.abbr[si];
+  const segs=LIB_NAHJ.items.filter(it=>it[0]===si && it[1]===num).sort((a,b)=>(a[2]>b[2]?1:-1));
+  const view=document.getElementById('nahjView');
+  if(!segs.length){view.innerHTML='';return;}
+  const nums=nahjIndex[si]; const pos=nums.indexOf(num);
+  const prev=pos>0?nums[pos-1]:null, next=pos>=0&&pos<nums.length-1?nums[pos+1]:null;
+  const nav=`<div class="reader-nav">
+      <button class="btn" ${prev?'':'disabled'} onclick="gotoNahj(${prev||0})">‹ ${prev?abbr+' '+prev:''}</button>
+      <button class="btn" ${next?'':'disabled'} onclick="gotoNahj(${next||0})">${next?abbr+' '+next:''} ›</button>
+    </div>`;
+  const head=`<div style="text-align:center;margin-bottom:14px">
+      <div class="ar arabic" style="font-size:1.8rem;color:var(--green-800)">${abbr==='Sermon'?'الخطبة':abbr==='Letter'?'الكتاب':'الحكمة'} ${num}</div>
+      <div style="color:var(--muted)">${abbr} ${num} — Nahj al-Balagha · ${segs.length} passage${segs.length!==1?'s':''}</div>
+    </div>`;
+  view.innerHTML = head + nav + segs.map(s=>resCard({ar:s[3]||'',tr:s[4]||'',ref:abbr+' '+num+(s[2]&&s[2]>1?' · ¶'+s[2]:'')})).join('') + nav;
+  view.scrollIntoView({behavior:'smooth'});
+}
+function gotoNahj(n){ if(!n) return; document.getElementById('nahjNum').value=n; showNahj(); }
+
+/* ============================================================
+   SHARED CARD + HIGHLIGHT + ACTIONS
+   ============================================================ */
+function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
+function normChar(c){
+  if(/[ʾʿʼˀ`']/.test(c)) return '';
+  c=c.normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[ؐ-ًؚ-ٰٟۖ-ۭـ]/g,'').toLowerCase();
+  if(!c) return '';
+  c=c[0];
+  if('آأإٱ'.indexOf(c)>=0) return 'ا';
+  if('ىیے'.indexOf(c)>=0) return 'ي';
+  if(c==='ؤ') return 'و';
+  if(c==='ئ') return 'ي';
+  if('ةہۃھ'.indexOf(c)>=0) return 'ه';
+  if(c==='ک') return 'ك';
+  return c;
+}
+// diacritic-insensitive highlighter (works for Arabic and English)
+function highlightNorm(text, terms){
+  terms=(terms||[]).filter(t=>t&&t.length>1);
+  if(!terms.length) return esc(text);
+  let normStr='', pos=[];
+  for(let i=0;i<text.length;i++){ const nc=normChar(text[i]); if(nc){ normStr+=nc; pos.push(i); } }
+  const ranges=[];
+  for(const t of terms){
+    let from=0,idx;
+    while((idx=normStr.indexOf(t,from))!==-1){ ranges.push([pos[idx], pos[idx+t.length-1]+1]); from=idx+t.length; }
+  }
+  if(!ranges.length) return esc(text);
+  ranges.sort((a,b)=>a[0]-b[0]);
+  const merged=[ranges[0]];
+  for(let k=1;k<ranges.length;k++){ const last=merged[merged.length-1];
+    if(ranges[k][0]<=last[1]) last[1]=Math.max(last[1],ranges[k][1]); else merged.push(ranges[k]); }
+  let out='',cur=0;
+  for(const r of merged){ out+=esc(text.slice(cur,r[0]))+'<mark>'+esc(text.slice(r[0],r[1]))+'</mark>'; cur=r[1]; }
+  return out+esc(text.slice(cur));
+}
+function resCard(o){
+  const terms=o.terms||[];
+  const badge = o.src ? `<span class="badge ${o.src==="Qur'an"?'quran':'book'}">${esc(o.src)}</span>` : '';
+  const audioBtn = o.audio ? `<button class="ic-btn" onclick="playAudio('${o.audio}')">▶</button>` : '';
+  const arHTML = highlightNorm(o.ar||'', terms);
+  const trHTML = highlightNorm(o.tr||'', terms);
+  const urHTML = o.ur ? highlightNorm(o.ur, terms) : '';
+  const faHTML = o.fa ? highlightNorm(o.fa, terms) : '';
+  return `<div class="res" data-ar="${esc(o.ar||'')}" data-tr="${esc(o.tr||'')}" data-ur="${esc(o.ur||'')}" data-fa="${esc(o.fa||'')}" data-ref="${esc(o.ref||'')}">
+    ${(o.ar||o.num)?`<div class="ar arabic">${arHTML}${o.num?` <span style="color:var(--gold);font-size:1rem">﴿${o.num}﴾</span>`:''}</div>`:''}
+    ${o.tr?`<div class="tr">${o.plain?'':'“'}${trHTML}${o.plain?'':'”'}</div>`:''}
+    ${o.ur?`<div class="ur">${urHTML}</div>`:''}
+    ${o.fa?`<div class="fa">${faHTML}</div>`:''}
+    <div class="meta">${badge}
+      <span style="color:var(--muted);font-size:.85rem">${esc(o.ref||'')}</span>
+      <span class="row-actions">${audioBtn}
+        <button class="ic-btn" title="Copy" onclick="copyRes(this)">⧉</button>
+        <button class="ic-btn bm" title="Bookmark" onclick="toggleBm(this)">${isBookmarked(o.ref)?'★':'☆'}</button>
+      </span>
+    </div>
+  </div>`;
+}
+
+/* ---- bookmarks (localStorage) ---- */
+function getBms(){ try{return JSON.parse(localStorage.getItem('noor_bookmarks')||'[]')}catch(e){return[]} }
+function setBms(a){ localStorage.setItem('noor_bookmarks',JSON.stringify(a)); }
+function isBookmarked(ref){ return !!ref && getBms().some(b=>b.ref===ref); }
+function toggleBm(btn){
+  const r=btn.closest('.res'); const o={ar:r.dataset.ar,tr:r.dataset.tr,ref:r.dataset.ref};
+  let a=getBms(); const i=a.findIndex(b=>b.ref===o.ref);
+  if(i>=0){ a.splice(i,1); btn.textContent='☆'; toast('Bookmark removed'); }
+  else { a.unshift(o); btn.textContent='★'; toast('Bookmarked ★'); }
+  setBms(a);
+}
+function copyRes(btn){
+  const r=btn.closest('.res');
+  let txt=r.dataset.ar+'\n';
+  if(r.dataset.tr) txt+='\n'+r.dataset.tr;
+  if(r.dataset.ur) txt+='\n'+r.dataset.ur;
+  if(r.dataset.fa) txt+='\n'+r.dataset.fa;
+  txt+='\n— '+r.dataset.ref;
+  if(navigator.clipboard){ navigator.clipboard.writeText(txt).then(()=>toast('Copied ✓'),()=>toast('Copy failed')); }
+  else toast('Copy not supported');
+}
+function openBookmarks(){
+  const a=getBms(); const el=document.getElementById('bmList');
+  el.innerHTML = a.length ? a.map(o=>resCard({ar:o.ar,tr:o.tr,ref:o.ref})).join('')
+    : '<div class="no-res">No bookmarks yet. Tap ☆ on any verse or narration to save it here.</div>';
+  document.getElementById('bmModal').classList.add('open');
+}
+function closeBookmarks(){ document.getElementById('bmModal').classList.remove('open'); }
+function toast(msg){
+  const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show');
+  clearTimeout(window._tt); window._tt=setTimeout(()=>t.classList.remove('show'),1600);
+}
+
+/* ---- preferences: theme, Arabic size, translation ---- */
+function loadPrefs(){ try{return JSON.parse(localStorage.getItem('noor_prefs')||'{}')}catch(e){return{}} }
+let prefs=loadPrefs();
+function savePrefs(){ localStorage.setItem('noor_prefs',JSON.stringify(prefs)); }
+function applyPrefs(){
+  document.body.classList.toggle('dark', prefs.theme==='dark');
+  document.body.style.setProperty('--ar-scale', prefs.ar||1);
+  document.body.classList.toggle('hide-tr', !!prefs.hideTr);
+  const lang=prefs.lang||'both';
+  document.body.classList.toggle('lang-en', lang==='en');
+  document.body.classList.toggle('lang-ur', lang==='ur');
+  document.body.classList.toggle('lang-fa', lang==='fa');
+  const tb=document.getElementById('themeBtn'); if(tb) tb.textContent= prefs.theme==='dark'?'☀️':'🌙';
+  const trb=document.getElementById('trBtn'); if(trb) trb.classList.toggle('on', !!prefs.hideTr);
+  const lbl={both:'ALL',en:'EN',ur:'UR',fa:'FA'}[lang]||'ALL';
+  const lb=document.getElementById('langBtn'); if(lb) lb.textContent = lbl;
+}
+function cycleLang(){
+  const order=['both','en','ur','fa'];
+  const cur=prefs.lang||'both';
+  prefs.lang=order[(order.indexOf(cur)+1)%order.length];
+  savePrefs(); applyPrefs();
+  const names={both:'All translations',en:'English',ur:'اردو (Urdu)',fa:'فارسی (Farsi)'};
+  toast(names[prefs.lang]);
+}
+function toggleTheme(){ prefs.theme = prefs.theme==='dark'?'light':'dark'; savePrefs(); applyPrefs(); }
+function setAr(d){ prefs.ar=Math.round((Math.min(1.8,Math.max(0.8,(+prefs.ar||1)+d*0.1)))*100)/100; savePrefs(); applyPrefs(); toast('Arabic size '+Math.round(prefs.ar*100)+'%'); }
+function toggleTr(){ prefs.hideTr=!prefs.hideTr; savePrefs(); applyPrefs(); toast(prefs.hideTr?'Arabic only':'Translation shown'); }
+applyPrefs();
+
+/* ---- audio recitation (streamed, no download) ---- */
+let _audio;
+function ayahAudio(s,a){ const p=n=>String(n).padStart(3,'0'); return 'https://everyayah.com/data/Alafasy_128kbps/'+p(s)+p(a)+'.mp3'; }
+function playAudio(url){
+  if(_audio){ _audio.pause(); }
+  _audio=new Audio(url);
+  _audio.play().then(()=>toast('▶ Reciting')).catch(()=>toast('Audio unavailable offline'));
+}
+
+/* ============================================================
+   DAILY COMPANION
+   ============================================================ */
+// Islamic (Hijri) date — computed offline via Intl
+(function(){
+  const now=new Date();
+  try{ document.getElementById('hijriDate').textContent =
+    new Intl.DateTimeFormat('en-u-ca-islamic-umalqura',{day:'numeric',month:'long',year:'numeric',weekday:'long'}).format(now); }
+  catch(e){ document.getElementById('hijriDate').textContent='—'; }
+  document.getElementById('gregDate').textContent =
+    now.toLocaleDateString(undefined,{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  try{ document.getElementById('hijriAr').textContent =
+    new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura',{day:'numeric',month:'long',year:'numeric'}).format(now); }catch(e){}
+})();
+
+// Prayer times via Aladhan (Shia Ithnā ʿAsharī method)
+function ptRender(d){
+  const list=document.getElementById('ptList'); const note=document.getElementById('ptNote');
+  if(!d||d.code!==200||!d.data||!d.data.timings){ note.textContent='Could not find that place — try just the city name, or use 📍 My location.'; return; }
+  const t=d.data.timings;
+  const want=[['Fajr','Fajr'],['Sunrise','Sunrise'],['Dhuhr','Ẓuhr'],['Asr','ʿAṣr'],['Maghrib','Maghrib'],['Isha','ʿIshāʾ']];
+  list.innerHTML=want.map(w=>`<li><span>${w[1]}</span><b>${t[w[0]]}</b></li>`).join('');
+  const tz=(d.data.meta&&d.data.meta.timezone)?' · '+d.data.meta.timezone:'';
+  note.textContent='Shia Ithnā ʿAsharī method'+tz;
+}
+function ptFetch(url, fallbackUrl){
+  const list=document.getElementById('ptList'); const note=document.getElementById('ptNote');
+  note.textContent='Loading…'; list.innerHTML='';
+  const ctrl=('AbortController'in window)?new AbortController():null;
+  const timer=setTimeout(()=>{ if(ctrl) ctrl.abort(); },12000);   // don't hang forever
+  fetch(url, ctrl?{signal:ctrl.signal}:{}).then(r=>r.json()).then(d=>{
+    clearTimeout(timer);
+    if(d && d.code===200 && d.data && d.data.timings){ ptRender(d); return; }
+    if(fallbackUrl){ ptFetch(fallbackUrl); return; }     // try the other lookup method
+    note.textContent='Could not find that place — try just the city name, or tap 📍 My location.';
+  }).catch(()=>{
+    clearTimeout(timer);
+    if(fallbackUrl){ ptFetch(fallbackUrl); return; }
+    note.textContent='Could not reach the prayer-times service — check your connection and tap Get Times again.';
+  });
+}
+function getPrayerTimes(){
+  const city=document.getElementById('ptCity').value.trim();
+  const country=document.getElementById('ptCountry').value.trim();
+  const note=document.getElementById('ptNote');
+  if(!city && !country){ note.textContent='Enter a city or area, or tap 📍 My location.'; return; }
+  prefs.city=city; prefs.country=country; savePrefs();
+  const address=[city,country].filter(Boolean).join(', ');
+  // primary: timingsByAddress (handles districts) — fallback: timingsByCity if that fails
+  const primary='https://api.aladhan.com/v1/timingsByAddress?address='+encodeURIComponent(address)+'&method=0';
+  const fallback = city ? 'https://api.aladhan.com/v1/timingsByCity?city='+encodeURIComponent(city)+'&country='+encodeURIComponent(country)+'&method=0' : null;
+  ptFetch(primary, fallback);
+}
+function getPrayerTimesByGeo(){
+  const note=document.getElementById('ptNote');
+  if(!navigator.geolocation){ note.textContent='Location not available — type a city instead.'; return; }
+  note.textContent='Locating you…';
+  navigator.geolocation.getCurrentPosition(p=>{
+    ptFetch('https://api.aladhan.com/v1/timings?latitude='+p.coords.latitude+'&longitude='+p.coords.longitude+'&method=0');
+  },err=>{
+    note.textContent = (err&&err.code===1)
+      ? 'Location permission denied — allow location, or type a city.'
+      : 'Could not get your location — type a city instead.';
+  },{timeout:10000,maximumAge:600000});
+}
+if(prefs.city){ document.getElementById('ptCity').value=prefs.city; document.getElementById('ptCountry').value=prefs.country||''; getPrayerTimes(); }
+
+// Qibla — live compass that points to the Kaʿbah relative to the phone's heading
+let _qiblaBearing=null, _qiblaAttached=false, _qiblaGotEvent=false;
+function findQibla(){
+  const txt=document.getElementById('qiblaText');
+  const secure=(location.protocol==='https:'||location.hostname==='localhost');
+  if(!secure){ txt.textContent='Location & compass need a secure (https) connection — open the live site on https.'; }
+  // iOS 13+: ask for motion/orientation permission inside the user gesture
+  if(typeof DeviceOrientationEvent!=='undefined' && typeof DeviceOrientationEvent.requestPermission==='function'){
+    DeviceOrientationEvent.requestPermission().then(s=>{ if(s==='granted') attachQiblaCompass(); }).catch(()=>{});
+  } else { attachQiblaCompass(); }
+  if(!navigator.geolocation){ txt.textContent='Location is not available on this device.'; return; }
+  txt.textContent='Locating you…';
+  navigator.geolocation.getCurrentPosition(p=>{
+    const lat=p.coords.latitude*Math.PI/180, lon=p.coords.longitude*Math.PI/180;
+    const klat=21.4225*Math.PI/180, klon=39.8262*Math.PI/180, dl=klon-lon;
+    let b=Math.atan2(Math.sin(dl), Math.cos(lat)*Math.tan(klat)-Math.sin(lat)*Math.cos(dl))*180/Math.PI;
+    _qiblaBearing=(b+360)%360;
+    document.getElementById('qiblaNeedle').style.transform='rotate('+_qiblaBearing+'deg)';
+    const angle='Qibla is '+_qiblaBearing.toFixed(0)+'° clockwise from North.';
+    txt.textContent = _qiblaAttached ? angle+' Hold the phone flat and turn until the 🕋 points straight up.' : angle+' (No live compass here — use the angle with a compass.)';
+    // if a live compass was attached but no usable reading arrives, tell the user
+    if(_qiblaAttached) setTimeout(()=>{ if(!_qiblaGotEvent){ document.getElementById('qiblaText').textContent=angle+' (Live compass unavailable on this device — use the angle.)'; } },3000);
+  },err=>{
+    txt.textContent = (err&&err.code===1)
+      ? 'Location permission was denied — allow location for this site and tap Find Qibla again.'
+      : 'Could not get your location — try again, ideally outdoors with location on.';
+  },{timeout:10000,maximumAge:600000,enableHighAccuracy:true});
+}
+function attachQiblaCompass(){
+  if(_qiblaAttached) return;
+  function handle(e){
+    let heading=null;
+    if(typeof e.webkitCompassHeading==='number') heading=e.webkitCompassHeading;     // iOS: true degrees clockwise from N
+    else if(e.alpha!=null && (e.absolute===true || 'ondeviceorientationabsolute' in window)) heading=(360-e.alpha)%360; // only TRUE-north (absolute) headings
+    if(heading==null || _qiblaBearing==null) return;                                 // ignore unreliable relative readings
+    _qiblaGotEvent=true;
+    const rot=(_qiblaBearing-heading+360)%360;                                        // Qibla relative to phone's "up"
+    const n=document.getElementById('qiblaNeedle'); if(n) n.style.transform='rotate('+rot+'deg)';
+  }
+  if('ondeviceorientationabsolute' in window){ window.addEventListener('deviceorientationabsolute',handle,true); _qiblaAttached=true; }
+  else if(window.DeviceOrientationEvent){ window.addEventListener('deviceorientation',handle,true); _qiblaAttached=true; }
+}
+
+// Tasbīḥ counter (Tasbīḥ of al-Zahrāʾ ع)
+const tasbihCycle=[['سُبْحَانَ اللَّه',33],['الْحَمْدُ لِلَّه',33],['اللَّهُ أَكْبَر',34]];
+let tasbih = prefs.tasbih || {i:0,c:0,total:0};
+function tasbihRender(){
+  document.getElementById('tasbihDhikr').textContent=tasbihCycle[tasbih.i][0];
+  document.getElementById('tasbihTarget').textContent='Target '+tasbihCycle[tasbih.i][1]+' · total '+tasbih.total;
+  document.getElementById('tasbihCount').textContent=tasbih.c;
+}
+function tasbihTap(){
+  tasbih.c++; tasbih.total++;
+  if(tasbih.c>=tasbihCycle[tasbih.i][1]){ tasbih.c=0; tasbih.i=(tasbih.i+1)%tasbihCycle.length; toast('✓ '+tasbihCycle[tasbih.i][0]); }
+  prefs.tasbih=tasbih; savePrefs(); tasbihRender();
+}
+function tasbihReset(){ tasbih={i:0,c:0,total:0}; prefs.tasbih=tasbih; savePrefs(); tasbihRender(); }
+tasbihRender();
+
+// Duʿāʾ of the day
+const duas=[
+  {ar:"رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",tr:"Our Lord, give us good in this world and good in the Hereafter, and protect us from the punishment of the Fire.",src:"Qurʾan 2:201"},
+  {ar:"اللَّهُمَّ عَجِّلْ لِوَلِيِّكَ الْفَرَجَ",tr:"O Allah, hasten the relief of Your awaited guardian (al-Mahdī, may Allah hasten his reappearance).",src:"Supplication for the Imam of the Age"},
+  {ar:"رَبِّ اشْرَحْ لِي صَدْرِي وَيَسِّرْ لِي أَمْرِي",tr:"My Lord, expand for me my breast and ease for me my task.",src:"Qurʾan 20:25–26"},
+  {ar:"اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَآلِ مُحَمَّدٍ وَعَجِّلْ فَرَجَهُمْ",tr:"O Allah, send blessings upon Muḥammad and the family of Muḥammad, and hasten their relief.",src:"Ṣalawāt"},
+  {ar:"حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ",tr:"Allah is sufficient for us, and He is the best Disposer of affairs.",src:"Qurʾan 3:173"},
+  {ar:"يَا مَنِ اسْمُهُ دَوَاءٌ وَذِكْرُهُ شِفَاءٌ",tr:"O He whose Name is a remedy and whose remembrance is a cure.",src:"Duʿāʾ from the Ahl al-Bayt (ع)"},
+  {ar:"رَبِّ زِدْنِي عِلْمًا",tr:"My Lord, increase me in knowledge.",src:"Qurʾan 20:114"}
+];
+(function(){ const d=duas[dayIndex(duas.length)];
+  document.getElementById('dua-ar').textContent=d.ar;
+  document.getElementById('dua-tr').textContent='“'+d.tr+'”';
+  document.getElementById('dua-src').textContent='— '+d.src;
+})();
+
+/* ---- deep-link to a verse, e.g. #36 or #36:9 ---- */
+function handleHash(){
+  const m=(location.hash||'').replace('#','').match(/^(\d{1,3})(?::(\d{1,3}))?$/);
+  if(m && typeof window.LIB_QURAN!=='undefined'){
+    const s=+m[1]; const pick=document.getElementById('surahPick');
+    if(pick && LIB_QURAN.some(x=>x.s===s)){ pick.value=s; showSurah(m[2]?+m[2]:null); }
+  }
+}
+window.addEventListener('hashchange',handleHash);
+if(location.hash) setTimeout(handleHash,80);
+
+/* ---- Remove any old service worker + caches (they caused stale content) ---- */
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister())).catch(()=>{});
+}
+if(window.caches){ caches.keys().then(ks=>ks.forEach(k=>caches.delete(k))).catch(()=>{}); }
+
+/* ---- "Also search all hadith" toggle (opt-in, loads ~32 MB once) ---- */
+const ALL_HADITH_KEYS=['kafi1','kafi2','kafi3','kafi4','kafi5','kafi6','kafi7','kafi8','uyun1','uyun2','khisal','huquq'];
+let hadithSearchOn=false;
+function enableAllHadith(){
+  const btn=document.getElementById('hadSearchBtn'); if(!btn) return;
+  if(hadithSearchOn){ runSearch(); return; }
+  btn.textContent='Loading hadith books… (~32 MB, one time)';
+  Promise.all(ALL_HADITH_KEYS.map(loadHadith)).then(()=>{
+    hadithSearchOn=true; btn.textContent='✓ Hadith books now included in "All sources" search'; btn.classList.add('gold');
+    if(document.getElementById('q').value.trim()) runSearch();
+  }).catch(()=>{ btn.textContent='Could not load hadith books (offline?) — tap to retry'; });
+}
+
+/* ---- Hadith & Fiqh library browser ---- */
+const HB_BOOKS=[
+  {key:'kafi1', label:'Al-Kāfī — Vol 1 (Uṣūl: Intellect, Tawḥīd, Ḥujja)'},
+  {key:'kafi2', label:'Al-Kāfī — Vol 2 (Uṣūl: Faith, Manners, Duʿāʾ)'},
+  {key:'kafi3', label:'Al-Kāfī — Vol 3 (Furūʿ: Purity, Prayer, Funerals)'},
+  {key:'kafi4', label:'Al-Kāfī — Vol 4 (Furūʿ: Zakāh, Fasting, Ḥajj)'},
+  {key:'kafi5', label:'Al-Kāfī — Vol 5 (Furūʿ: Trade, Marriage)'},
+  {key:'kafi6', label:'Al-Kāfī — Vol 6 (Furūʿ: Family, Food, Drink)'},
+  {key:'kafi7', label:'Al-Kāfī — Vol 7 (Furūʿ: Wills, Inheritance, Ḥudūd)'},
+  {key:'kafi8', label:'Al-Kāfī — Vol 8 (al-Rawḍa / Miscellany)'},
+  {key:'uyun1', label:'ʿUyūn Akhbār al-Riḍā — Vol 1'},
+  {key:'uyun2', label:'ʿUyūn Akhbār al-Riḍā — Vol 2'},
+  {key:'khisal', label:'Al-Khiṣāl — al-Shaykh al-Ṣadūq'},
+  {key:'huquq', label:'Risālat al-Ḥuqūq — Imam al-Sajjād (ع)'},
+  {key:'__sistani__', label:'Islamic Laws — Sayyid al-Sīstānī (Fiqh)'},
+  {key:'__khui__', label:'Islamic Laws — Sayyid al-Khūʾī (Fiqh)'},
+  {key:'__guide__', label:'Religious Laws — Khomeini &amp; Khāmaneʾī (Fiqh)'}
+];
+function fiqhKey(k){ const m=/^__(.+)__$/.exec(k); return m?m[1]:null; }
+function fiqhFileFor(fk){ const f=FIQH_FILES.find(x=>x.key===fk); return f?f.file:null; }
+(function(){ const sel=document.getElementById('hbBook');
+  if(sel){ sel.innerHTML=HB_BOOKS.map(b=>`<option value="${b.key}">${b.label}</option>`).join('');
+    document.getElementById('hbView').innerHTML='<div class="no-res">Choose a book, then press <b>Open</b>. Each book loads only when you open it.</div>';
+  }
+})();
+function hbLoaded(key){ const fk=fiqhKey(key); return fk ? (window.LIB_FIQH&&window.LIB_FIQH[fk]) : (window.LIB_HADITH&&window.LIB_HADITH[key]); }
+function loadHbData(key){ const fk=fiqhKey(key); return fk ? loadScript(fiqhFileFor(fk)).then(()=>window.LIB_FIQH[fk]) : loadHadith(key); }
+function loadHbBook(){
+  const key=document.getElementById('hbBook').value;
+  const chSel=document.getElementById('hbChapter');
+  chSel.innerHTML='<option>Loading…</option>';
+  return loadHbData(key).then(b=>{
+    if(fiqhKey(key))
+      chSel.innerHTML=b.sec.map((s,i)=>`<option value="${i}">${i+1}. ${esc((s.t||'Section').slice(0,80))}</option>`).join('');
+    else
+      chSel.innerHTML=b.ch.map((c,i)=>`<option value="${i}">${i+1}. ${esc((c.t||('Chapter '+(i+1))).slice(0,80))}</option>`).join('');
+    return b;
+  }).catch(()=>{ chSel.innerHTML='<option>Failed to load</option>'; });
+}
+function hbReadLinks(label){
+  const base=encodeURIComponent(label.split('—')[0].trim());
+  return `<div style="text-align:center;color:var(--muted);font-size:.82rem;margin:4px 0 12px">Read this book in: `+
+    `<a target="_blank" rel="noopener" href="https://www.google.com/search?q=${base}+اردو+ترجمہ" style="color:var(--green-600)">اردو Urdu ↗</a> · `+
+    `<a target="_blank" rel="noopener" href="https://www.google.com/search?q=${base}+ترجمه+فارسی" style="color:var(--green-600)">فارسی Farsi ↗</a></div>`;
+}
+function renderHb(){
+  const key=document.getElementById('hbBook').value;
+  const ci=+document.getElementById('hbChapter').value||0;
+  const view=document.getElementById('hbView');
+  const label=(HB_BOOKS.find(b=>b.key===key)||{}).label||'';
+  const fk=fiqhKey(key);
+  if(fk){
+    const b=window.LIB_FIQH&&window.LIB_FIQH[fk]; if(!b){view.innerHTML='';return;}
+    const s=b.sec[ci]; if(!s) return;
+    view.innerHTML=`<div style="text-align:center;margin-bottom:12px">
+        <div class="ar arabic" style="font-size:1.5rem;color:var(--green-800)">${esc(s.t||'')}</div>
+        <div style="color:var(--muted)">${esc(b.marja||'')} · ${s.p.length} ruling${s.p.length!==1?'s':''}</div>
+      </div>` + s.p.map(p=>resCard({tr:p,plain:true,ref:(s.t||b.name)})).join('');
+    view.scrollIntoView({behavior:'smooth'}); return;
+  }
+  const b=window.LIB_HADITH&&window.LIB_HADITH[key]; if(!b) return;
+  const ch=b.ch[ci]; if(!ch) return;
+  const short=b.name.split('—')[0].trim();
+  view.innerHTML=`<div style="text-align:center;margin-bottom:12px">
+      <div class="ar arabic" style="font-size:1.4rem;color:var(--green-800)">${esc(b.name)}</div>
+      <div style="color:var(--muted)">${esc(ch.t||'')} · ${ch.h.length} narration${ch.h.length!==1?'s':''}</div>
+    </div>` + hbReadLinks(label)
+    + ch.h.map(h=>resCard({ar:h[1],tr:h[2],ref:short+' · #'+h[0]})).join('');
+  view.scrollIntoView({behavior:'smooth'});
+}
+function showHbChapter(){
+  const key=document.getElementById('hbBook').value;
+  if(!hbLoaded(key)){ document.getElementById('hbView').innerHTML='<div class="no-res">Loading…</div>'; loadHbBook().then(()=>renderHb()); return; }
+  renderHb();
+}
+
+/* ---- 3D cursor-tilt on cards (delegated; survives re-renders) ---- */
+(function(){
+  if(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if(matchMedia('(hover: none)').matches) return; // skip on touch devices
+  function attachTilt(containerSel, cardSel, max){
+    document.querySelectorAll(containerSel).forEach(el=>{
+      let last=null;
+      const reset=c=>{ if(c){ c.style.transform=''; c.style.zIndex=''; c.style.boxShadow=''; } };
+      el.addEventListener('mousemove',e=>{
+        const card=e.target.closest(cardSel);
+        if(card!==last){ reset(last); last=card; }
+        if(!card || !el.contains(card)) return;
+        const r=card.getBoundingClientRect();
+        const px=(e.clientX-r.left)/r.width-0.5, py=(e.clientY-r.top)/r.height-0.5;
+        card.style.transform='perspective(900px) rotateY('+(px*max).toFixed(2)+'deg) rotateX('+(-py*max).toFixed(2)+'deg) translateZ(10px) scale(1.012)';
+        card.style.zIndex='5';
+        card.style.boxShadow='0 26px 50px rgba(10,46,35,.22)';
+      });
+      el.addEventListener('mouseleave',()=>{ reset(last); last=null; });
+    });
+  }
+  attachTilt('#results, #surahView, #nahjView, #hbView, #marjaSistani, #bmList', '.res', 7);
+  attachTilt('#marajiGrid', '.marja', 6);
+  attachTilt('#booksGrid', '.book', 8);
+  attachTilt('.tools-grid', '.tool-card', 7);
+  attachTilt('.daily-grid', '.rcard', 5);
+})();
+
+/* ============================================================
+   QUIZ
+   ============================================================ */
+const quizState={diff:0, lang:'en', pool:[], idx:0, score:0};
+(function(){
+  document.querySelectorAll('#quizDiff button').forEach(b=>b.addEventListener('click',()=>{
+    document.querySelectorAll('#quizDiff button').forEach(x=>x.classList.remove('sel')); b.classList.add('sel'); quizState.diff=+b.dataset.d;
+  }));
+  document.querySelectorAll('#quizLang button').forEach(b=>b.addEventListener('click',()=>{
+    document.querySelectorAll('#quizLang button').forEach(x=>x.classList.remove('sel')); b.classList.add('sel'); quizState.lang=b.dataset.l;
+  }));
+})();
+function quizShuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); const t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+const QUIZ_DIFF=['Mixed','Easy','Medium','Hard','Hardest'];
+const QUIZ_LIDX={en:0,ar:1,ur:2,fa:3};
+const QUIZ_LEN=10;
+
+/* ---- procedural question generators (effectively unlimited, never-repeating) ---- */
+function qRand(n){ return Math.floor(Math.random()*n); }
+function qPick(a){ return a[qRand(a.length)]; }
+function qSurahs(exclude,n){ const out=[],used=new Set([exclude&&exclude.s]); let g=0;
+  while(out.length<n && g++<200){ const s=LIB_QURAN[qRand(LIB_QURAN.length)]; if(used.has(s.s))continue; used.add(s.s); out.push(s); } return out; }
+// 1) which surah is this verse from
+function genSurahId(d){
+  const pool = d<=1 ? LIB_QURAN.filter(s=>s.s>=100||s.s===1||s.s===36||s.s===55)
+            : d===2 ? LIB_QURAN.filter(s=>s.s>=40) : LIB_QURAN;
+  const su=qPick(pool), v=qPick(su.v), opts=[su,...qSurahs(su,3)];
+  return { q:{en:"From which sūrah is this verse?",ar:"مِن أيِّ سورةٍ هذه الآية؟",ur:"یہ آیت کس سورت سے ہے؟",fa:"این آیه از کدام سوره است؟"},
+    verse:v[1], o:opts.map(s=>[s.nt,s.na,s.na,s.na]), a:0, cat:"Qur'an", d,
+    ex:`Sūrah ${su.s}. ${su.nt} — ${su.ne} (${su.s}:${v[0]}).` };
+}
+// 2) how many verses in surah X
+function genVerseCount(d){
+  const pool = d<=2 ? LIB_QURAN.filter(s=>s.s>=80||s.s<=12) : LIB_QURAN;
+  const su=qPick(pool), c=su.v.length, set=new Set([c]);
+  while(set.size<4){ let n=c+(qRand(13)-6); if(n<1)n=Math.abs(n)+1; set.add(n); }
+  const arr=[...set];
+  return { q:{en:`How many verses are in Sūrah ${su.nt} (${su.ne})?`,ar:`كم آيةً في سورة ${su.na}؟`,ur:`سورہ ${su.na} میں کتنی آیات ہیں؟`,fa:`سورهٔ ${su.na} چند آیه دارد؟`},
+    o:arr.map(n=>[''+n,''+n,''+n,''+n]), a:0, cat:"Qur'an", d, ex:`Sūrah ${su.nt} has ${c} verses.` };
+}
+// 3) order/number of a surah
+function genSurahOrder(d){
+  const su=qPick(LIB_QURAN), set=new Set([su.s]);
+  while(set.size<4){ let n=1+qRand(114); set.add(n); }
+  const arr=[...set];
+  return { q:{en:`What is the number (order) of Sūrah ${su.nt}?`,ar:`ما هو ترتيبُ سورة ${su.na} في المصحف؟`,ur:`سورہ ${su.na} کا نمبر کیا ہے؟`,fa:`شمارهٔ سورهٔ ${su.na} چند است؟`},
+    o:arr.map(n=>[''+n,''+n,''+n,''+n]), a:0, cat:"Qur'an", d, ex:`Sūrah ${su.nt} is number ${su.s}.` };
+}
+// 4) which line continues this verse (hard) — Arabic options
+function genContinue(d){
+  const su=qPick(LIB_QURAN.filter(s=>s.v.length>4)), i=qRand(su.v.length-1), correct=su.v[i+1][1];
+  const distract=[]; let g=0;
+  while(distract.length<3 && g++<80){ const t=qPick(qPick(LIB_QURAN).v)[1]; if(t!==correct && !distract.includes(t)) distract.push(t); }
+  return { q:{en:"Which line continues this verse?",ar:"أيُّ سطرٍ يُكمِلُ هذه الآية؟",ur:"اس آیت کو کون سی سطر مکمل کرتی ہے؟",fa:"کدام عبارت این آیه را کامل می‌کند؟"},
+    verse:su.v[i][1], o:[correct,...distract].map(t=>[t,t,t,t]), a:0, optAr:true, cat:"Qur'an", d, ex:`${su.nt} ${su.s}:${su.v[i+1][0]}.` };
+}
+// 5) meaning of this verse (non-Arabic UI) — options are translations in the chosen language
+function genTranslation(d){
+  if(quizState.lang==='ar') return genSurahId(d);
+  const su=qPick(d<=1?LIB_QURAN.filter(s=>s.s>=95):LIB_QURAN), v=qPick(su.v);
+  const distract=[]; let g=0;
+  while(distract.length<3 && g++<80){ const vv=qPick(qPick(LIB_QURAN).v); if(vv!==v && !distract.includes(vv)) distract.push(vv); }
+  return { q:{en:"What is the meaning of this verse?",ar:"ما معنى هذه الآية؟",ur:"اس آیت کا مفہوم کیا ہے؟",fa:"معنای این آیه چیست؟"},
+    verse:v[1], o:[v,...distract].map(x=>[x[2]||'',x[1]||'',x[3]||x[2]||'',x[4]||x[2]||'']), a:0, cat:"Qur'an", d, ex:`${su.nt} ${su.s}:${v[0]}.` };
+}
+function qTrim(t){ t=t||''; return t.length>240 ? t.slice(0,240).replace(/\s\S*$/,'')+' …' : t; }
+// pool of Arabic-text sources (loaded ones only) for "which book is this from?"
+function quizSourcePool(){
+  const pool=[{ name:{en:"The Holy Qur'an",ar:"القرآن الكريم",ur:"قرآن مجید",fa:"قرآن کریم"}, get:()=>qPick(qPick(LIB_QURAN).v)[1] }];
+  if(window.LIB_NAHJ) pool.push({ name:{en:"Nahj al-Balāghah",ar:"نهج البلاغة",ur:"نہج البلاغہ",fa:"نهج‌البلاغه"}, get:()=>qPick(LIB_NAHJ.items)[3] });
+  if(window.LIB_HADITH){
+    const kafi=['kafi1','kafi2','kafi3','kafi4','kafi5','kafi6','kafi7','kafi8'].filter(k=>LIB_HADITH[k]);
+    if(kafi.length) pool.push({ name:{en:"Al-Kāfī",ar:"الكافي",ur:"الکافی",fa:"الکافی"}, get:()=>{ const b=LIB_HADITH[qPick(kafi)]; return qPick(qPick(b.ch).h)[1]; } });
+    const uy=['uyun1','uyun2'].filter(k=>LIB_HADITH[k]);
+    if(uy.length) pool.push({ name:{en:"ʿUyūn Akhbār al-Riḍā",ar:"عيون أخبار الرضا",ur:"عیون اخبار الرضا",fa:"عیون اخبار الرضا"}, get:()=>qPick(qPick(LIB_HADITH[qPick(uy)].ch).h)[1] });
+    if(LIB_HADITH.khisal) pool.push({ name:{en:"Al-Khiṣāl",ar:"الخصال",ur:"الخصال",fa:"الخصال"}, get:()=>qPick(qPick(LIB_HADITH.khisal.ch).h)[1] });
+  }
+  return pool;
+}
+// "which book is this passage from?"
+function genSource(d){
+  const pool=quizShuffle(quizSourcePool());
+  if(pool.length<4) return genSurahId(d);
+  const correct=pool[0]; let verse='', g=0;
+  while((!verse||verse.length<10) && g++<12) verse=correct.get()||'';
+  const opts=[correct, pool[1], pool[2], pool[3]];
+  return { q:{en:"Which book is this passage from?",ar:"مِن أيِّ كتابٍ هذا النص؟",ur:"یہ اقتباس کس کتاب سے ہے؟",fa:"این متن از کدام کتاب است؟"},
+    verse:qTrim(verse), o:opts.map(s=>[s.name.en,s.name.ar,s.name.ur,s.name.fa]), a:0, cat:"Sources", d, ex:`This passage is from ${correct.name.en}.` };
+}
+// "which part of Nahj al-Balagha is this?"
+function genNahjSection(d){
+  if(!window.LIB_NAHJ) return genSurahId(d);
+  const it=qPick(LIB_NAHJ.items), sec=LIB_NAHJ.abbr[it[0]];
+  const lab={Sermon:{en:"A Sermon (Khuṭbah)",ar:"خطبة",ur:"خطبہ",fa:"خطبه"},Letter:{en:"A Letter (Risālah)",ar:"رسالة",ur:"مکتوب",fa:"نامه"},Saying:{en:"A Saying (Ḥikmah)",ar:"حكمة",ur:"حکمت",fa:"حکمت"}};
+  const others=['Sermon','Letter','Saying'].filter(x=>x!==sec);
+  const o=[lab[sec],lab[others[0]],lab[others[1]]].map(x=>[x.en,x.ar,x.ur,x.fa]);
+  o.push(["A Qurʾanic verse","آية قرآنية","قرآنی آیت","آیهٔ قرآن"]);
+  return { q:{en:"This passage is from which part of Nahj al-Balāghah?",ar:"هذا النصّ من أيِّ قسمٍ من نهج البلاغة؟",ur:"یہ اقتباس نہج البلاغہ کے کس حصے سے ہے؟",fa:"این متن از کدام بخش نهج‌البلاغه است؟"},
+    verse:qTrim(it[3]), o, a:0, cat:"Nahj al-Balagha", d, ex:`This is a ${sec.toLowerCase()} from Nahj al-Balāghah.` };
+}
+function quizMakeOne(d){
+  if(!d) d=1+qRand(4);
+  // sometimes use a hand-written curated question of this difficulty
+  const curated=(typeof LIB_QUIZ!=='undefined')?LIB_QUIZ.filter(q=>q.d===d):[];
+  if(curated.length && Math.random()<0.5){ const q=qPick(curated); return {q:q.q,o:q.o,a:q.a,ex:q.ex,cat:q.cat,d:q.d,verse:q.verse}; }
+  const gens=[genSurahId];
+  if(d>=2){ gens.push(genVerseCount, genSurahOrder); }
+  if(d>=3){ gens.push(genContinue); }
+  if(quizState.lang!=='ar'){ gens.push(genTranslation); }
+  if(window.LIB_NAHJ){ gens.push(genNahjSection); }
+  if(quizSourcePool().length>=4){ gens.push(genSource, genSource); } // cross-book question, weighted
+  try{ return qPick(gens)(d); }catch(e){ return genSurahId(d); }
+}
+// Load Nahj (already loaded) + a few hadith books so the quiz can pull from them
+const QUIZ_LOAD_KEYS=['kafi1','uyun1','khisal','huquq'];
+function ensureQuizSources(){
+  const jobs=[];
+  if(typeof loadHadith==='function'){ QUIZ_LOAD_KEYS.forEach(k=>{ if(!(window.LIB_HADITH&&LIB_HADITH[k])) jobs.push(loadHadith(k).catch(()=>{})); }); }
+  return Promise.all(jobs);
+}
+function quizBuild(){
+  const sess=[], seen=new Set(); let guard=0;
+  while(sess.length<QUIZ_LEN && guard++<500){
+    const item=quizMakeOne(quizState.diff);
+    if(!item || !item.o || item.o.length<2) continue;
+    const key=(item.verse||'')+'|'+(item.q&&item.q.en||'')+'|'+(item.o[0]&&item.o[0][0]);
+    if(seen.has(key)) continue; seen.add(key);
+    const order=quizShuffle(item.o.map((_,i)=>i));
+    sess.push({ q:item, order, a:order.indexOf(item.a) });
+  }
+  quizState.pool=sess; quizState.idx=0; quizState.score=0;
+  renderQuiz();
+}
+function quizStart(){
+  if(typeof window.LIB_QURAN==='undefined'){ document.getElementById('quizRun').innerHTML='<div class="no-res">The Quran library is still loading — please try again in a moment.</div>'; return; }
+  document.getElementById('quizStart').style.display='none';
+  const run=document.getElementById('quizRun');
+  run.innerHTML='<div class="quiz-card"><div class="no-res">Preparing questions from the Qur’an, Nahj al-Balāghah and the hadith books… ⏳<br><span style="font-size:.8rem">(first time loads a few books; instant afterwards)</span></div></div>';
+  ensureQuizSources().then(quizBuild).catch(quizBuild);
+}
+function renderQuiz(){
+  const st=quizState; const item=st.pool[st.idx];
+  if(!item){ return quizResult(); }
+  const q=item.q; const L=st.lang; const rtl=L!=='en';
+  const verseBlock = q.verse ? `<div class="quiz-verse">${esc(q.verse)}</div>` : '';
+  const run=document.getElementById('quizRun');
+  run.innerHTML=`
+    <div class="quiz-card">
+      <div class="quiz-meta">
+        <span class="quiz-badge">${esc(q.cat)} · ${QUIZ_DIFF[q.d]}</span>
+        <span>Question ${st.idx+1} / ${st.pool.length}</span>
+      </div>
+      <div class="quiz-q ${L==='en'?'':L}"${rtl?' dir="rtl"':''}>${esc(q.q[L]||q.q.en)}</div>
+      ${verseBlock}
+      <div class="quiz-opts" id="quizOpts">
+        ${item.order.map((oi,k)=>{
+          const oAr=!!q.optAr;
+          const txt=q.o[oi][oAr?1:QUIZ_LIDX[L]]||q.o[oi][0];
+          const ocls='opt '+(oAr?'ar':(L==='en'?'':L));
+          const odir=(oAr||rtl)?' dir="rtl"':'';
+          return `<button class="${ocls}"${odir} onclick="quizAnswer(${k})"><span class="k">${String.fromCharCode(65+k)}</span><span>${esc(txt)}</span></button>`;
+        }).join('')}
+      </div>
+      <div class="quiz-ex" id="quizEx"></div>
+      <div class="quiz-foot">
+        <span class="quiz-score">Score: ${st.score}</span>
+        <button class="btn" id="quizNextBtn" style="display:none" onclick="quizNext()">Next ›</button>
+      </div>
+    </div>`;
+  document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function quizAnswer(k){
+  const st=quizState; const item=st.pool[st.idx];
+  const opts=[...document.querySelectorAll('#quizOpts .opt')];
+  if(!opts.length || opts[0].disabled) return;
+  opts.forEach(o=>o.disabled=true);
+  if(k===item.a){ opts[k].classList.add('correct'); st.score++; }
+  else { opts[k].classList.add('wrong'); opts[item.a].classList.add('correct'); }
+  const ex=document.getElementById('quizEx');
+  if(item.q.ex){ ex.textContent='✦ '+item.q.ex; ex.classList.add('show'); }
+  document.querySelector('.quiz-score').textContent='Score: '+st.score;
+  const nb=document.getElementById('quizNextBtn'); nb.style.display='inline-flex';
+  nb.textContent = st.idx>=st.pool.length-1 ? 'See result ›' : 'Next ›';
+}
+function quizNext(){ quizState.idx++; (quizState.idx>=quizState.pool.length) ? quizResult() : renderQuiz(); }
+function quizResult(){
+  const st=quizState; const total=st.pool.length||1; const pct=Math.round(st.score/total*100);
+  const msg = pct>=80?'Māshāʾ Allāh — excellent!' : pct>=50?'Good — keep learning!' : 'Keep seeking knowledge — ṭalab al-ʿilm is a duty.';
+  document.getElementById('quizRun').innerHTML=`
+    <div class="quiz-card quiz-result">
+      <div class="big">${st.score} / ${total}</div>
+      <div style="color:var(--muted);margin:4px 0">${pct}%</div>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--green-800);margin:12px 0 20px">${msg}</p>
+      <button class="btn gold" style="padding:12px 28px" onclick="quizReset()">↻ Try again</button>
+    </div>`;
+  document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function quizReset(){ document.getElementById('quizRun').innerHTML=''; document.getElementById('quizStart').style.display=''; document.getElementById('quiz').scrollIntoView({behavior:'smooth'}); }
+
+/* ============================================================
+   ISLAMIC HISTORY EVENTS
+   ============================================================ */
+const evState={lang:'en',cat:'all'};
+const EV_LBL={ read:{en:'Read full details ▼',ar:'اقرأ التفاصيل ▼',ur:'مکمل تفصیل ▼',fa:'جزئیات کامل ▼'},
+               hide:{en:'Hide details ▲',ar:'إخفاء التفاصيل ▲',ur:'بند کریں ▲',fa:'بستن ▲'} };
+(function(){
+  if(typeof window.LIB_EVENTS==='undefined') return;
+  const cats=['all',...new Set(LIB_EVENTS.map(e=>e.cat))];
+  const cc=document.getElementById('evCat');
+  if(cc){ cc.innerHTML=cats.map((c,i)=>`<button data-c="${esc(c)}" class="${i===0?'sel':''}">${c==='all'?'All':esc(c)}</button>`).join('');
+    cc.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{ cc.querySelectorAll('button').forEach(x=>x.classList.remove('sel')); b.classList.add('sel'); evState.cat=b.dataset.c; renderEvents(); })); }
+  const lc=document.getElementById('evLang');
+  if(lc) lc.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{ lc.querySelectorAll('button').forEach(x=>x.classList.remove('sel')); b.classList.add('sel'); evState.lang=b.dataset.l; renderEvents(); }));
+  const inp=document.getElementById('evQ');
+  if(inp){ inp.addEventListener('input',renderEvents); inp.addEventListener('keydown',e=>{ if(e.key==='Enter') renderEvents(); }); }
+  renderEvents();
+})();
+function evHay(e){ let s=e.id+' '+e.cat+' '; ['en','ar','ur','fa'].forEach(l=>{ s+=(e.t[l]||'')+' '+(e.sum[l]||'')+' '+(e.det[l]||'')+' '+(e.when[l]||'')+' '+(e.place[l]||'')+' '; }); return norm(s); }
+function evToggle(btn){ const ev=btn.closest('.ev'); const open=ev.classList.toggle('open'); btn.textContent=open?EV_LBL.hide[evState.lang]:EV_LBL.read[evState.lang]; }
+function renderEvents(){
+  if(typeof window.LIB_EVENTS==='undefined') return;
+  const L=evState.lang, rtl=L!=='en';
+  const terms=norm((document.getElementById('evQ').value||'').trim()).split(/\s+/).filter(Boolean);
+  const list=LIB_EVENTS.filter(e=>{
+    if(evState.cat!=='all' && e.cat!==evState.cat) return false;
+    if(!terms.length) return true;
+    return terms.every(t=>evHay(e).includes(t));
+  });
+  const box=document.getElementById('evList');
+  if(!list.length){ box.innerHTML='<div class="no-res">No event matched. Try another keyword (e.g. Karbala, Ghadir, Badr, Hijrah).</div>'; return; }
+  box.innerHTML=list.map(e=>`
+    <div class="ev ${L==='en'?'':L}"${rtl?' dir="rtl"':''}>
+      <div class="ev-top"><span class="ev-cat">${esc(e.cat)}</span><span class="ev-when">${esc(e.when[L]||e.when.en)}</span></div>
+      <h3>${esc(e.t[L]||e.t.en)}</h3>
+      <div class="ev-place">📍 ${esc(e.place[L]||e.place.en)}</div>
+      <div class="ev-sum">${esc(e.sum[L]||e.sum.en)}</div>
+      <div class="ev-det">${esc(e.det[L]||e.det.en)}</div>
+      <button class="ev-toggle" onclick="evToggle(this)">${EV_LBL.read[L]}</button>
+    </div>`).join('');
+}
+
+/* ============================================================
+   ZIYARAT & DUAS
+   ============================================================ */
+(function(){
+  if(typeof window.LIB_DUAS==='undefined') return;
+  renderDuaGrid();
+  const inp=document.getElementById('duaQ');
+  if(inp) inp.addEventListener('input',renderDuaGrid);
+})();
+function renderDuaGrid(){
+  if(typeof window.LIB_DUAS==='undefined') return;
+  const q=norm((document.getElementById('duaQ').value||'').trim());
+  const list=LIB_DUAS.filter(d=> !q || norm(d.t.en+' '+d.t.ar+' '+d.cat+' '+d.id).includes(q));
+  const g=document.getElementById('duaGrid');
+  g.innerHTML = list.length ? list.map(d=>`
+    <div class="dua-card" onclick="openDua('${d.id}')">
+      <div class="dua-ar">${esc(d.t.ar)}</div>
+      <div class="dua-en">${esc(d.t.en)}</div>
+      <div class="dua-cat">${esc(d.cat)} · ${d.lines.length} lines</div>
+    </div>`).join('') : '<div class="no-res">No supplication matched.</div>';
+}
+function openDua(id){
+  const d=LIB_DUAS.find(x=>x.id===id); if(!d) return;
+  const r=document.getElementById('duaReader');
+  r.innerHTML=`<div style="text-align:center;margin:6px 0 18px">
+      <div class="dua-ar" style="font-size:2rem;font-family:'Amiri',serif;color:var(--green-800)">${esc(d.t.ar)}</div>
+      <div style="color:var(--muted);margin-top:2px">${esc(d.t.en)} · ${esc(d.cat)} · ${d.lines.length} lines</div>
+      <button class="btn" style="margin-top:12px;background:var(--green-700)" onclick="closeDua()">✕ Close</button>
+    </div>` + d.lines.map(l=>`
+    <div class="dua-line">
+      ${l[0]?`<div class="ar">${esc(l[0])}</div>`:''}
+      ${l[1]?`<div class="en">${esc(l[1])}</div>`:''}
+    </div>`).join('');
+  r.scrollIntoView({behavior:'smooth'});
+}
+function closeDua(){ document.getElementById('duaReader').innerHTML=''; document.getElementById('duas').scrollIntoView({behavior:'smooth'}); }
+
+// search on Enter + search-as-you-type
+document.getElementById('q').addEventListener('keydown',e=>{ if(e.key==='Enter') runSearch(); });
+let _st; document.getElementById('q').addEventListener('input',()=>{ clearTimeout(_st); _st=setTimeout(runSearch,260); });
+document.getElementById('srcFilter').addEventListener('change',runSearch);
+// close bookmarks modal on backdrop click
+document.getElementById('bmModal').addEventListener('click',e=>{ if(e.target.id==='bmModal') closeBookmarks(); });
+</script>
+</body>
+</html>
