@@ -572,6 +572,8 @@
           <option value="Bihar al-Anwar">Bihar al-Anwar</option>
         </select>
         <button class="btn gold" onclick="runSearch()">⌕ Search</button>
+                        <button class="btn" onclick="closeHbChapter()">⚔ Close</button>
+
       </div>
       <div class="search-hint">
         <span class="chip" onclick="quick('صبر')">صبر · Patience</span>
@@ -614,7 +616,10 @@
     <div class="search-shell">
       <div class="search-box" style="justify-content:center">
         <select id="surahPick" style="flex:1;min-width:240px;padding:12px 14px;font-size:1rem"></select>
-        <button class="btn" onclick="showSurah()">📖 Open Sūrah</button>
+        <button class="btn" onclick="showSurah()">📖 Open </button>
+        <button class="btn" onclick="closeSurah()">⚔ Close </button>
+              
+
       </div>
       <div id="surahView" style="margin-top:24px"></div>
     </div>
@@ -633,7 +638,9 @@
       <div class="search-box" style="justify-content:center">
         <select id="nahjSec" style="min-width:150px;padding:12px 14px;font-size:1rem" onchange="fillNahjNums()"></select>
         <select id="nahjNum" style="flex:1;min-width:160px;padding:12px 14px;font-size:1rem"></select>
-        <button class="btn" onclick="showNahj()">⚔ Open</button>
+        <button class="btn" onclick="showNahj()">📖 Open</button>
+                <button class="btn" onclick="closeNahj()">⚔ Close</button>
+
       </div>
       <div id="nahjView" style="margin-top:24px"></div>
     </div>
@@ -653,6 +660,8 @@
         <select id="hbBook" style="min-width:240px;padding:12px 14px;font-size:1rem" onchange="loadHbBook()"></select>
         <select id="hbChapter" style="flex:1;min-width:220px;padding:12px 14px;font-size:1rem"></select>
         <button class="btn" onclick="showHbChapter()">📖 Open</button>
+                <button class="btn" onclick="closeHbChapter()">⚔ Close</button>
+
       </div>
       <div id="hbView" style="margin-top:24px"></div>
       <p style="text-align:center;color:var(--muted);font-size:.8rem;margin-top:16px">
@@ -674,6 +683,9 @@
       <div class="search-box">
         <input type="text" id="marjaQ" placeholder="Ask a fiqh question or a book…  e.g. how to fast / khums / wudu / Sistani" />
         <button class="btn gold" onclick="marjaSearch(document.getElementById('marjaQ').value)">⌕ Find Ruling</button>
+                        <button class="btn" onclick="closeMarjaSearch()">⚔ Close</button>
+
+
       </div>
       <div class="search-hint">
         <span class="chip" onclick="marjaAsk('how to fast')">How to fast</span>
@@ -862,7 +874,7 @@
       </div>
     </div>
     <div class="foot-bottom">
-      Made in the love of the Ahl al-Bayt (ع). Verify all rulings with your own Marji'. © <span id="yr"></span> Noor al-Hidayah. Iftikhar Ali Wazir
+      Made in the love of the Ahl al-Bayt (ع). Verify all rulings with your own Marji'. © <span id="yr"></span> Noor al-Hidayah.
     </div>
   </div>
 </footer>
@@ -1075,58 +1087,162 @@ function fiqhRulings(book, terms, limit){
 }
 
 function marjaSearch(q){
-  q=(q||'').trim();
-  renderMaraji(q);                 // also filter the cards
-  const box=document.getElementById('marjaResults');
-  if(q.length<3){ box.innerHTML=''; return; }
-  // links for the Maraji whose books aren't bundled as text
-  const links = maraji.filter(m=>!FIQH_COVERED.test(m.n)).map(m=>{
-    const d=marjaDomain(m);
-    const url='https://www.google.com/search?q='+encodeURIComponent((d?'site:'+d+' ':'"'+m.n+'" ')+q);
-    const shortName=m.n.replace(/^(Sayyid|Shaykh|Imam)\s+/,'');
-    return `<a class="chip" target="_blank" rel="noopener" href="${url}" style="text-decoration:none">${shortName} ↗</a>`;
-  }).join('');
+  q = (q || '').trim();
+
+  const box = document.getElementById('marjaResults');
+
+  // Close if search is empty
+  if(q.length < 3){
+    closeMarjaSearch();
+    return;
+  }
+
+  // Show only matching Maraji cards
+  renderMaraji(q);
+
+  const links = maraji
+    .filter(m => !FIQH_COVERED.test(m.n))
+    .map(m => {
+      const d = marjaDomain(m);
+      const url =
+        'https://www.google.com/search?q=' +
+        encodeURIComponent((d ? 'site:' + d + ' ' : '"' + m.n + '" ') + q);
+
+      const shortName = m.n.replace(/^(Sayyid|Shaykh|Imam)\s+/, '');
+
+      return `
+      <a class="chip"
+         target="_blank"
+         rel="noopener"
+         href="${url}"
+         style="text-decoration:none">
+         ${shortName} ↗
+      </a>`;
+    }).join('');
+
   box.innerHTML =
-    `<div style="text-align:center;color:var(--green-800);font-weight:600;margin-bottom:6px">“${q}” — the ruling according to the Maraji:</div>`+
-    (links?`<div style="text-align:center;color:var(--muted);font-size:.82rem;margin-bottom:6px">Other Maraji (opens their official rulings):</div><div class="search-hint">${links}</div>`:'')+
-    `<div id="marjaInline" style="margin-top:18px"></div>`;
-  const inline=document.getElementById('marjaInline');
-  inline.innerHTML='<div class="no-res">Loading the Maraji’s rulings…</div>';
-  loadAllFiqh().then(()=>{
-    const STOP=new Set(['how','to','the','a','an','of','is','are','do','does','can','what','when','where','why','for','in','on','and','my','me','should','must','it','be','with','i','you','your','about','rules','ruling','law','laws']);
-    let terms=norm(q).split(/\s+/).filter(Boolean);
-    const content=terms.filter(t=>!STOP.has(t) && t.length>2);
-    if(content.length) terms=content;
-    if(terms.length>1){ terms=[terms.sort((a,b)=>b.length-a.length)[0]]; } // focus on the key topic word
-    let html='';
+    `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+
+        <div style="font-weight:600;color:var(--green-800)">
+            "${q}" — Rulings according to the Maraji
+        </div>
+
+        <button class="btn" onclick="closeMarjaSearch()">
+            ✕ Close
+        </button>
+
+    </div>`
+
+    +
+
+    (links
+      ? `<div style="text-align:center;color:var(--muted);font-size:.82rem;margin-bottom:8px">
+            Other Maraji (official rulings)
+         </div>
+
+         <div class="search-hint">${links}</div>`
+      : '')
+
+    +
+
+    `<div id="marjaInline" style="margin-top:18px">
+        <div class="no-res">
+            Loading the Maraji's rulings...
+        </div>
+     </div>`;
+
+  const inline = document.getElementById('marjaInline');
+
+  loadAllFiqh().then(() => {
+
+    const STOP = new Set([
+      'how','to','the','a','an','of','is','are','do','does','can',
+      'what','when','where','why','for','in','on','and','my','me',
+      'should','must','it','be','with','i','you','your','about',
+      'rules','ruling','law','laws'
+    ]);
+
+    let terms = norm(q).split(/\s+/).filter(Boolean);
+
+    const content = terms.filter(t => !STOP.has(t) && t.length > 2);
+
+    if(content.length) terms = content;
+
+    if(terms.length > 1)
+      terms = [terms.sort((a,b)=>b.length-a.length)[0]];
+
+    let html = '';
+
     for(const f of FIQH_FILES){
-      const book=window.LIB_FIQH && window.LIB_FIQH[f.key]; if(!book) continue;
-      const hits=fiqhRulings(book, terms, 4);
+
+      const book = window.LIB_FIQH && window.LIB_FIQH[f.key];
+
+      if(!book) continue;
+
+      const hits = fiqhRulings(book, terms, 4);
+
       if(!hits.length) continue;
-      html += `<div style="margin-top:8px"><h3 style="text-align:center;color:var(--green-800);font-size:1.35rem;margin-bottom:2px">📘 ${book.marja}</h3>`+
-              `<p style="text-align:center;color:var(--muted);font-size:.78rem;margin-bottom:12px">${book.name}</p>`+
-              hits.map(h=>resCard({tr:h.tr,plain:true,ref:h.ref})).join('')+`</div>`;
+
+      html +=
+      `<div style="margin-top:20px">
+
+          <h3 style="text-align:center;color:var(--green-800)">
+              📘 ${book.marja}
+          </h3>
+
+          <p style="text-align:center;color:var(--muted)">
+              ${book.name}
+          </p>
+
+          ${hits.map(h=>resCard({
+              tr:h.tr,
+              plain:true,
+              ref:h.ref
+          })).join('')}
+
+      </div>`;
     }
-    inline.innerHTML = html ||
-      `<div class="no-res">No direct ruling matched “${q}”. Try a simpler keyword (e.g. “fasting”, “wudu”, “khums”), or use the links above for the other Maraji.</div>`;
-  }).catch(()=>{ inline.innerHTML='<div class="no-res">Could not load the rulings (offline?). Use the per-Marjaʿ links above.</div>'; });
+
+    inline.innerHTML =
+      html ||
+      `<div class="no-res">
+          No ruling found for "<b>${q}</b>".
+      </div>`;
+
+  }).catch(() => {
+
+    inline.innerHTML =
+      `<div class="no-res">
+          Could not load the rulings.
+      </div>`;
+
+  });
 }
+function closeMarjaSearch(){
 
-// books
-document.getElementById('booksGrid').innerHTML = coreBooks.map(b=>`
-  <div class="book">
-    <div>
-      <div class="ar">${b.ar}</div>
-      <h3>${b.n}</h3>
-      <p>${b.d}</p>
-    </div>
-    ${b.url.charAt(0)==='#'
-       ? `<a href="${b.url}">Read here ↓</a>`
-       : `<a href="${b.url}" target="_blank" rel="noopener">Read / Search ↗</a>`}
-  </div>`).join('');
+    // Clear search box
+    document.getElementById('marjaQ').value = '';
 
-document.getElementById('yr').textContent = new Date().getFullYear();
+    // Remove search results
+    document.getElementById('marjaResults').innerHTML = '';
 
+    // Restore all Maraji cards
+    renderMaraji('');
+
+    // Remove URL hash (optional)
+    if(history.replaceState){
+        history.replaceState(null,'',window.location.pathname);
+    }
+
+    // Scroll back to search input
+    document.getElementById('marjaQ').scrollIntoView({
+        behavior:'smooth',
+        block:'center'
+    });
+
+    // Focus search box
+    document.getElementById('marjaQ').focus();
+}
 /* ============================================================
    SEARCH
    ============================================================ */
@@ -1279,13 +1395,22 @@ function runBookSearch(filter, raw, terms){
   }).catch(()=>box.innerHTML='<div class="no-res">Could not load '+filter+' (offline?).</div>');
 }
 
-function runSearch(){
+function runSearch() {
+
   const raw = document.getElementById('q').value.trim();
   const filter = document.getElementById('srcFilter').value;
   const box = document.getElementById('results');
+
+  // Make search results visible
+  box.style.display = "block";
+
   updateExt(raw);
 
-  if(!raw && !filter){ box.innerHTML=''; return; }
+  if (!raw && !filter) {
+    box.innerHTML = '';
+    return;
+  }
+
   const nq = norm(raw);
   const terms = nq.split(/\s+/).filter(Boolean);
 
@@ -1329,6 +1454,35 @@ function searchMarja(name){
   const url = 'https://www.google.com/search?q='+encodeURIComponent('"'+name+'" fatwa ruling masail '+ (document.getElementById('q').value||''));
   window.open(url,'_blank');
 }
+function closeSearch() {
+
+  // Clear search input
+  document.getElementById("q").value = "";
+
+  // Reset filter (optional)
+  document.getElementById("srcFilter").selectedIndex = 0;
+
+  // Clear results
+  const box = document.getElementById("results");
+  box.innerHTML = "";
+
+  // Hide results
+  box.style.display = "none";
+
+  // Remove search hash if any
+  if (history.replaceState) {
+    history.replaceState(null, "", window.location.pathname + window.location.search);
+  }
+
+  // Scroll back to search box
+  document.getElementById("q").scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+
+  // Focus the search box
+  document.getElementById("q").focus();
+}
 
 // federated external search links
 function updateExt(q){
@@ -1352,30 +1506,168 @@ updateExt('');
     sel.innerHTML = LIB_QURAN.map(s=>`<option value="${s.s}">${s.s}. ${s.nt} — ${s.ne} (${s.v.length})</option>`).join('');
   }
 })();
-function showSurah(scrollAyah){
-  if(typeof window.LIB_QURAN==='undefined') return;
-  const id=+document.getElementById('surahPick').value;
-  const idx=LIB_QURAN.findIndex(s=>s.s===id);
-  const su=LIB_QURAN[idx];
-  const view=document.getElementById('surahView');
-  if(!su){view.innerHTML='';return;}
-  if(history.replaceState) history.replaceState(null,'','#'+su.s);
-  const prev=idx>0?LIB_QURAN[idx-1]:null, next=idx<LIB_QURAN.length-1?LIB_QURAN[idx+1]:null;
-  const nav=`<div class="reader-nav">
-      <button class="btn" ${prev?'':'disabled'} onclick="gotoSurah(${prev?prev.s:0})">‹ ${prev?prev.nt:''}</button>
-      <button class="btn" ${next?'':'disabled'} onclick="gotoSurah(${next?next.s:0})">${next?next.nt:''} ›</button>
-    </div>`;
-  const basmala=(id!==1 && id!==9)
-    ? `<div class="res" style="text-align:center;border-left-color:var(--gold)"><div class="ar arabic" style="text-align:center">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div></div>` : '';
-  view.innerHTML = `<div style="text-align:center;margin-bottom:14px">
-      <div class="ar arabic" style="font-size:2rem;color:var(--green-800)">${su.na}</div>
-      <div style="color:var(--muted)">Sūrah ${su.s} · ${su.nt} — ${su.ne} · ${su.v.length} verses</div>
-    </div>` + nav + basmala + su.v.map(v=>resCard({ar:v[1],tr:v[2],ur:v[3]||'',fa:v[4]||'',ref:'Qurʼan '+su.s+':'+v[0],num:v[0],audio:ayahAudio(su.s,v[0])})).join('') + nav;
-  if(scrollAyah){ const cards=view.querySelectorAll('.res'); const off=(id!==1&&id!==9?1:0); const el=cards[off+(scrollAyah-1)]; if(el) el.scrollIntoView({behavior:'smooth',block:'center'}); }
-  else view.scrollIntoView({behavior:'smooth'});
-}
-function gotoSurah(s){ if(!s) return; document.getElementById('surahPick').value=s; showSurah(); }
 
+
+function showSurah(scrollAyah) {
+
+    if (typeof window.LIB_QURAN === 'undefined') return;
+
+    const id = +document.getElementById('surahPick').value;
+    const idx = LIB_QURAN.findIndex(s => s.s === id);
+    const su = LIB_QURAN[idx];
+
+    const view = document.getElementById('surahView');
+
+    // Make sure the reader is visible
+    view.style.display = "block";
+
+    if (!su) {
+        view.innerHTML = '';
+        return;
+    }
+
+    if (history.replaceState) {
+        history.replaceState(null, '', '#' + su.s);
+    }
+
+    const prev = idx > 0 ? LIB_QURAN[idx - 1] : null;
+    const next = idx < LIB_QURAN.length - 1 ? LIB_QURAN[idx + 1] : null;
+
+    const nav = `
+    <div class="reader-nav">
+
+        <button class="btn"
+            ${prev ? '' : 'disabled'}
+            onclick="gotoSurah(${prev ? prev.s : 0})">
+            ‹ ${prev ? prev.nt : ''}
+        </button>
+
+        <button class="btn"
+            onclick="closeSurah()">
+            ✕ Close
+        </button>
+
+        <button class="btn"
+            ${next ? '' : 'disabled'}
+            onclick="gotoSurah(${next ? next.s : 0})">
+            ${next ? next.nt : ''} ›
+        </button>
+
+    </div>`;
+
+    const basmala = (id !== 1 && id !== 9)
+        ? `
+        <div class="res" style="text-align:center;border-left-color:var(--gold)">
+            <div class="ar arabic" style="text-align:center">
+                بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+            </div>
+        </div>`
+        : '';
+
+    view.innerHTML =
+
+        `<div style="text-align:center;margin-bottom:14px">
+
+            <div class="ar arabic"
+                style="font-size:2rem;color:var(--green-800)">
+                ${su.na}
+            </div>
+
+            <div style="color:var(--muted)">
+                Sūrah ${su.s} · ${su.nt} — ${su.ne} · ${su.v.length} verses
+            </div>
+
+        </div>`
+
+        + nav
+
+        + basmala
+
+        + su.v.map(v =>
+
+            resCard({
+                ar: v[1],
+                tr: v[2],
+                ur: v[3] || '',
+                fa: v[4] || '',
+                ref: 'Qurʼan ' + su.s + ':' + v[0],
+                num: v[0],
+                audio: ayahAudio(su.s, v[0])
+            })
+
+        ).join('')
+
+        + nav;
+
+    if (scrollAyah) {
+
+        const cards = view.querySelectorAll('.res');
+        const off = (id !== 1 && id !== 9 ? 1 : 0);
+
+        const el = cards[off + (scrollAyah - 1)];
+
+        if (el) {
+
+            el.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+
+        }
+
+    } else {
+
+        view.scrollIntoView({
+            behavior: 'smooth'
+        });
+
+    }
+
+}
+
+
+
+function gotoSurah(s) {
+
+    if (!s) return;
+
+    document.getElementById('surahPick').value = s;
+
+    showSurah();
+
+}
+
+
+
+function closeSurah() {
+
+    const view = document.getElementById('surahView');
+
+    // Clear reader
+    view.innerHTML = "";
+
+    // Hide reader
+    view.style.display = "none";
+
+    // Remove URL hash
+    if (history.replaceState) {
+        history.replaceState(
+            null,
+            "",
+            window.location.pathname + window.location.search
+        );
+    }
+
+    // Reset selector to first Surah (optional)
+    // document.getElementById("surahPick").selectedIndex = 0;
+
+    // Scroll back to selector
+    document.getElementById("surahPick").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+}
 /* ---- Nahj al-Balagha library browser ---- */
 let nahjIndex = [];
 (function(){
@@ -1397,16 +1689,31 @@ function fillNahjNums(){
   document.getElementById('nahjNum').innerHTML =
     nahjIndex[si].map(n=>`<option value="${n}">${abbr} ${n}</option>`).join('');
 }
+
+  // Continue with your existing code...
+
 function showNahj(){
   if(typeof window.LIB_NAHJ==='undefined') return;
-  const si=+document.getElementById('nahjSec').value;
-  const num=+document.getElementById('nahjNum').value;
-  const abbr=LIB_NAHJ.abbr[si];
-  const segs=LIB_NAHJ.items.filter(it=>it[0]===si && it[1]===num).sort((a,b)=>(a[2]>b[2]?1:-1));
-  const view=document.getElementById('nahjView');
-  if(!segs.length){view.innerHTML='';return;}
-  const nums=nahjIndex[si]; const pos=nums.indexOf(num);
-  const prev=pos>0?nums[pos-1]:null, next=pos>=0&&pos<nums.length-1?nums[pos+1]:null;
+
+  const view = document.getElementById('nahjView');
+  view.style.display = 'block';
+
+  const si = +document.getElementById('nahjSec').value;
+  const num = +document.getElementById('nahjNum').value;
+  const abbr = LIB_NAHJ.abbr[si];
+  const segs = LIB_NAHJ.items
+      .filter(it => it[0]===si && it[1]===num)
+      .sort((a,b)=>(a[2]>b[2]?1:-1));
+
+  if(!segs.length){
+      view.innerHTML = '';
+      return;
+  }
+
+  const nums = nahjIndex[si];
+  const pos = nums.indexOf(num);
+  const prev = pos > 0 ? nums[pos-1] : null;
+  const next = pos >= 0 && pos < nums.length-1 ? nums[pos+1] : null;
   const nav=`<div class="reader-nav">
       <button class="btn" ${prev?'':'disabled'} onclick="gotoNahj(${prev||0})">‹ ${prev?abbr+' '+prev:''}</button>
       <button class="btn" ${next?'':'disabled'} onclick="gotoNahj(${next||0})">${next?abbr+' '+next:''} ›</button>
@@ -1419,6 +1726,16 @@ function showNahj(){
   view.scrollIntoView({behavior:'smooth'});
 }
 function gotoNahj(n){ if(!n) return; document.getElementById('nahjNum').value=n; showNahj(); }
+
+function closeNahj() {
+    const view = document.getElementById('nahjView');
+
+    // Clear the displayed content
+    view.innerHTML = '';
+
+    // Hide the container (if desired)
+    view.style.display = 'none';
+}
 
 /* ============================================================
    SHARED CARD + HIGHLIGHT + ACTIONS
@@ -1794,10 +2111,39 @@ function renderHb(){
     + ch.h.map(h=>resCard({ar:h[1],tr:h[2],ref:short+' · #'+h[0]})).join('');
   view.scrollIntoView({behavior:'smooth'});
 }
-function showHbChapter(){
-  const key=document.getElementById('hbBook').value;
-  if(!hbLoaded(key)){ document.getElementById('hbView').innerHTML='<div class="no-res">Loading…</div>'; loadHbBook().then(()=>renderHb()); return; }
-  renderHb();
+function showHbChapter() {
+
+    const key = document.getElementById('hbBook').value;
+    const view = document.getElementById('hbView');
+
+    // Make the reader visible again
+    view.style.display = "block";
+
+    if (!hbLoaded(key)) {
+        view.innerHTML = '<div class="no-res">Loading…</div>';
+        loadHbBook().then(() => renderHb());
+        return;
+    }
+
+    renderHb();
+
+}
+function closeHbChapter() {
+
+    const view = document.getElementById("hbView");
+
+    // Clear the reader
+    view.innerHTML = "";
+
+    // Hide it
+    view.style.display = "none";
+
+    // Scroll back to the selector
+    document.getElementById("hbBook").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
 }
 
 /* ---- 3D cursor-tilt on cards (delegated; survives re-renders) ---- */
