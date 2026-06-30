@@ -572,7 +572,6 @@
           <option value="Bihar al-Anwar">Bihar al-Anwar</option>
         </select>
         <button class="btn gold" onclick="runSearch()">⌕ Search</button>
-                        <button class="btn" onclick="closeHbChapter()">⚔ Close</button>
 
       </div>
       <div class="search-hint">
@@ -1394,20 +1393,19 @@ function runBookSearch(filter, raw, terms){
     renderBookResults(hits, raw, filter, searchHadithBooks(keys,terms,81).length>80);
   }).catch(()=>box.innerHTML='<div class="no-res">Could not load '+filter+' (offline?).</div>');
 }
-
-function runSearch() {
+function runSearch(){
 
   const raw = document.getElementById('q').value.trim();
   const filter = document.getElementById('srcFilter').value;
   const box = document.getElementById('results');
 
-  // Make search results visible
+  // Show results area
   box.style.display = "block";
 
   updateExt(raw);
 
-  if (!raw && !filter) {
-    box.innerHTML = '';
+  if(!raw && !filter){
+    closerunSearch();
     return;
   }
 
@@ -1415,74 +1413,173 @@ function runSearch() {
   const terms = nq.split(/\s+/).filter(Boolean);
 
   // Full external books (lazy-loaded on demand)
-  if(filter && (SOURCE_BOOKS[filter] || filter==='Islamic Laws (Sistani)')){
+  if(filter && (SOURCE_BOOKS[filter] || filter === 'Islamic Laws (Sistani)')){
     return runBookSearch(filter, raw, terms);
   }
 
   let hits = corpus.filter(item=>{
-    if(filter && item.src!==filter) return false;
+    if(filter && item.src !== filter) return false;
     if(!raw) return true;
-    const hay = norm(item.ar+' '+item.tr+' '+item.tags+' '+item.src+' '+item.ref);
-    return terms.every(t=> hay.includes(t));
+
+    const hay = norm(
+      item.ar + ' ' +
+      item.tr + ' ' +
+      item.tags + ' ' +
+      item.src + ' ' +
+      item.ref
+    );
+
+    return terms.every(t => hay.includes(t));
   });
 
-  // Full Qur'an search (skipped only when filtered to a non-Qur'an source)
+  // Full Qur'an search
   let quranHits = [];
-  if(raw && (!filter || filter==="Qur'an")){ quranHits = searchQuran(terms, 60); }
+  if(raw && (!filter || filter === "Qur'an")){
+    quranHits = searchQuran(terms, 60);
+  }
+
   // Full Nahj al-Balagha search
   let nahjHits = [];
-  if(raw && (!filter || filter==="Nahj al-Balagha")){ nahjHits = searchNahj(terms, 50); }
-  // Full hadith books (only when loaded via the toggle, and not narrowed to a different source)
-  let hadithHits = [];
-  if(raw && hadithSearchOn && !filter){ hadithHits = searchHadithBooks(ALL_HADITH_KEYS, terms, 80); }
-  // the full texts cover any curated duplicates when browsing everything
-  if(!filter){ hits = hits.filter(h=>h.src!=="Qur'an" && h.src!=="Nahj al-Balagha"); }
-  const all = hits.concat(nahjHits, hadithHits, quranHits);
+  if(raw && (!filter || filter === "Nahj al-Balagha")){
+    nahjHits = searchNahj(terms, 50);
+  }
 
-  if(all.length===0){
-    box.innerHTML = `<div class="no-res">No match in the built-in collection for “${raw||filter}”.<br><br>Try the <b>full libraries</b> below — your search has been prepared for them.</div>`;
+  // Full Hadith search
+  let hadithHits = [];
+  if(raw && hadithSearchOn && !filter){
+    hadithHits = searchHadithBooks(
+      ALL_HADITH_KEYS,
+      terms,
+      80
+    );
+  }
+
+  // Remove duplicates
+  if(!filter){
+    hits = hits.filter(h =>
+      h.src !== "Qur'an" &&
+      h.src !== "Nahj al-Balagha"
+    );
+  }
+
+  const all = hits.concat(
+    nahjHits,
+    hadithHits,
+    quranHits
+  );
+
+  // No results
+  if(all.length === 0){
+
+    box.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+
+        <div class="no-res">
+          No match in the built-in collection for
+          "<b>${raw || filter}</b>".
+        </div>
+
+        <button class="btn" onclick="closerunSearch()">
+          ✕ Close
+        </button>
+
+      </div>
+
+      <div class="no-res">
+        Try the <b>full libraries</b> below — your search has been prepared for them.
+      </div>
+    `;
+
     return;
   }
-  const capped = quranHits.length>=60 || nahjHits.length>=50;
-  const capNote = capped ? '+ (some matches capped — refine to narrow)' : '';
-  const count = `<div style="text-align:center;color:var(--muted);font-size:.86rem;margin-bottom:4px">${all.length} result${all.length!==1?'s':''}${capNote} · narrations, full Qur'an &amp; Nahj al-Balagha</div>`;
-  box.innerHTML = count + all.map(h=>resCard({ar:h.ar,tr:h.tr,ur:h.ur,fa:h.fa,src:h.src,ref:h.ref,terms})).join('');
+
+  const capped =
+    quranHits.length >= 60 ||
+    nahjHits.length >= 50;
+
+  const capNote =
+    capped
+      ? '+ (some matches capped — refine to narrow)'
+      : '';
+
+  box.innerHTML = `
+
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+
+      <div style="color:var(--muted);font-size:.86rem">
+        ${all.length} result${all.length!==1?'s':''}
+        ${capNote}
+      </div>
+
+      <button class="btn" onclick="closerunSearch()">
+        ✕ Close
+      </button>
+
+    </div>
+
+  ` + all.map(h =>
+      resCard({
+        ar:h.ar,
+        tr:h.tr,
+        ur:h.ur,
+        fa:h.fa,
+        src:h.src,
+        ref:h.ref,
+        terms
+      })
+    ).join('');
 }
 
-function quick(t){ document.getElementById('q').value=t; runSearch(); document.getElementById('search').scrollIntoView({behavior:'smooth'}); }
-function searchMarja(name){
-  const url = 'https://www.google.com/search?q='+encodeURIComponent('"'+name+'" fatwa ruling masail '+ (document.getElementById('q').value||''));
-  window.open(url,'_blank');
+function closerunSearch(){
+
+    document.getElementById("q").value = "";
+    document.getElementById("srcFilter").selectedIndex = 0;
+
+    const box = document.getElementById("results");
+    box.innerHTML = "";
+    box.style.display = "none";
+
+    updateExt("");
+
+    if(history.replaceState){
+        history.replaceState(null, "", window.location.pathname);
+    }
+
+    document.getElementById("search").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+    document.getElementById("q").focus();
 }
-function closeSearch() {
+  
 
-  // Clear search input
-  document.getElementById("q").value = "";
 
-  // Reset filter (optional)
-  document.getElementById("srcFilter").selectedIndex = 0;
+function quick(t){
 
-  // Clear results
-  const box = document.getElementById("results");
-  box.innerHTML = "";
+    document.getElementById('q').value = t;
 
-  // Hide results
-  box.style.display = "none";
+    runSearch();
 
-  // Remove search hash if any
-  if (history.replaceState) {
-    history.replaceState(null, "", window.location.pathname + window.location.search);
-  }
-
-  // Scroll back to search box
-  document.getElementById("q").scrollIntoView({
-    behavior: "smooth",
-    block: "center"
-  });
-
-  // Focus the search box
-  document.getElementById("q").focus();
+    document.getElementById('search').scrollIntoView({
+        behavior:'smooth'
+    });
 }
+
+
+
+function runsearchMarja(name){
+
+    const url =
+        'https://www.google.com/search?q=' +
+        encodeURIComponent(
+            '"' + name + '" fatwa ruling masail ' +
+            (document.getElementById('q').value || '')
+        );
+
+    window.open(url,'_blank');
+}
+
 
 // federated external search links
 function updateExt(q){
